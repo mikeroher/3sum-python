@@ -1,11 +1,9 @@
-#!python
-#cython: language_level=3, boundscheck=False
-import pandas as pd
 import numpy as np
 import multiprocessing as mp
 from os import environ
-from mikeroher.mikeroher.main import sum_each_of_first_two_files, find_differences_in_third_file, _chunk_dataframe
-
+import itertools
+import _timing
+from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe
 ########################################### CHANGE ME #################################################
 # Set width for output
 OUTPUT_WIDTH = 320
@@ -34,31 +32,33 @@ NUM_OF_COLS = 40
 NUM_OF_PROCESSES = mp.cpu_count()
 ########################################## END OF CHANGE ME ############################################
 
-pd.set_option('display.width', OUTPUT_WIDTH)
-np.set_printoptions(linewidth=OUTPUT_WIDTH)
-
 # Passed into the `pd.read_table` in order to ensure that there are 40 columns provided
 LIST_OF_COLS = list(range(0, NUM_OF_COLS))
 
 FILE_TEMPLATE = "{}/{}"
 
-A = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
-B = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
-C = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
+DTYPE = np.intc
 
+A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
 
 manager = mp.Manager()
 
 hashtable = manager.dict()
 
-sum_each_of_first_two_files(A, hashtable)
+_hashtable = sum_each_of_first_two_files(A)
+# Bulk insert the `_hashtable` into the `hashtable`.
+hashtable.update(_hashtable)
 
 pool = mp.Pool(processes=NUM_OF_PROCESSES)
 # create our pool with `num_processes` processes
 #pool = mp.Pool(processes=NUM_OF_PROCESSES)
-third_file_chunked = _chunk_dataframe(C)
+third_file_chunked = chunk_dataframe(C, NUM_OF_PROCESSES)
 # apply our function to each chunk in the list
-matches = pool.map(find_differences_in_third_file, third_file_chunked)
+
+matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, itertools.repeat(hashtable)))
+pool.close()
 
 pool.close()
 pool.join()
@@ -68,4 +68,3 @@ for match_tuple in matches:
         print(match, file=file)
         print(match)
 file.close()
-
