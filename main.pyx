@@ -37,12 +37,16 @@ np.set_printoptions(linewidth=OUTPUT_WIDTH)
 # Passed into the `pd.read_table` in order to ensure that there are 40 columns provided
 LIST_OF_COLS = list(range(0, NUM_OF_COLS))
 
+# IMPORTANT - MAKE SURE ALL MATHEMATICAL OPERATIONS USE THE SAME DATATYPE. Otherwise, operations
+# will introduce different integer types resulting in different hashing values.
+DTYPE = np.int16
+
 FILE_TEMPLATE = "{}/{}"
 # http://gouthamanbalaraman.com/blog/numpy-vs-pandas-comparison.html
 #A = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
-A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=np.int16, ndmin=2)
-B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=np.int16, ndmin=2)
-C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=np.int16, ndmin=2)
+A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
 # B = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
 # C = pd.read_table(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), sep=" ", header=None, usecols=LIST_OF_COLS)
 # Used for some checks to skip rows
@@ -62,7 +66,7 @@ class RowPair:
     def __init__(self, rowA:np.ndarray, rowB:np.ndarray):
         self.rowA = rowA
         self.rowB = rowB
-        self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=np.int16)
+        self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
 
     def __eq__(self, other):
         return np.array_equal(self.rowA, other.rowA) and np.array_equal(self.rowB, other.rowB)
@@ -99,7 +103,7 @@ def sum_each_of_first_two_files(dfA:np.ndarray, hashtable) -> None:
             else:
                 # _hashtable[key].add(rowpair)
                 _hashtable[key].append(rowpair)
-    # # Bulk insert the `_hashtable` into the `hashtable`.
+    # Bulk insert the `_hashtable` into the `hashtable`.
     hashtable.update(_hashtable)
 
     return
@@ -111,7 +115,7 @@ def find_differences_in_third_file(df:np.ndarray):
         # The values call is necessary because np.subtract here returns the original
         # data type which is a Pandas series. This way we get an nparray instead where
         # we can call the data.
-        difference = np.subtract(LAMBDA, rowC, dtype=np.int16)
+        difference = np.subtract(LAMBDA, rowC, dtype=DTYPE)
         key = hash(difference.tobytes())
         value = hashtable.get(key)
 
