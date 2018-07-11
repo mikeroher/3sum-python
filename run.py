@@ -3,7 +3,15 @@ import multiprocessing as mp
 from os import environ
 import itertools
 import _timing
-from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe
+
+try:
+    # On local machine, it compiles to the nested path
+    from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, \
+        find_differences_in_third_file, chunk_dataframe, chunk_hashtable
+except ImportError:
+    # On Sharcnet it compiles to just threesum
+    from threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe, chunk_hashtable
+
 ########################################### CHANGE ME #################################################
 # Set width for output
 OUTPUT_WIDTH = 320
@@ -28,6 +36,10 @@ LAMBDA = 180
 
 NUM_OF_COLS = 40
 
+# When updating the dictionary, don't do it all at once.
+# Split it into chunks and insert each chunk.
+HASHTABLE_CHUNK_SIZE = 100
+
 # Number of processors to use for multiprocessing
 NUM_OF_PROCESSES = mp.cpu_count()
 ########################################## END OF CHANGE ME ############################################
@@ -48,8 +60,8 @@ manager = mp.Manager()
 hashtable = manager.dict()
 
 _hashtable = sum_each_of_first_two_files(A)
-# Bulk insert the `_hashtable` into the `hashtable`.
-hashtable.update(_hashtable)
+for chunk in chunk_hashtable(_hashtable, HASHTABLE_CHUNK_SIZE):
+    hashtable.update(chunk)
 
 pool = mp.Pool(processes=NUM_OF_PROCESSES)
 # create our pool with `num_processes` processes

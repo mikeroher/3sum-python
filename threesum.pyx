@@ -5,7 +5,7 @@ import numpy as np
 #access to Numpy C API
 cimport numpy as np
 import multiprocessing as mp
-
+from itertools import islice
 from os import environ
 
 ########################################### CHANGE ME #################################################
@@ -80,6 +80,15 @@ def chunk_dataframe(np.ndarray df, int n):
     #chunks = [df.ix[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]
     cdef list chunks = np.array_split(df, n, axis=0)
     return chunks
+
+def chunk_hashtable(dict ht, int N):
+    cdef int i
+    cdef np.int64_t key
+    cdef _iter = iter(ht)
+    cdef int dict_len = len(ht)
+    for i in range(0, dict_len, N):
+        yield {key: ht[key] for key in islice(_iter, N)}
+
 
 def sum_each_of_first_two_files(np.ndarray dfA):
     cdef RowPair rowpair = None
