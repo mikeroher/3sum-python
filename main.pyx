@@ -79,11 +79,14 @@ def sum_each_of_first_two_files(dfA:pd.DataFrame, hashtable) -> None:
     # through the new table
     dfA['KEY'] = 0
     B['KEY'] = 0
-    merged = pd.merge(dfA, B, how='outer')
+    merged = pd.merge(dfA, B, on='KEY')
+    merged.index = pd.MultiIndex.from_product((dfA.index, B.index))
+    dfA.drop('KEY', axis=1, inplace=True)
+    B.drop('KEY', axis=1, inplace=True)
 
-    for idx, row in merged.iterrows():
+    for idx, row in enumerate(merged.itertuples(index=False)):
         rowA = merged.iloc[idx:idx, 0:NUM_OF_COLS]
-        rowB = merged.iloc[idx:idx, NUM_OF_COLS:NUM_OF_COLS*2]
+        rowB = merged.iloc[idx:idx, NUM_OF_COLS:(NUM_OF_COLS*2)]
         rowpair = RowPair(rowA, rowB)
         # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
         key = hash(rowpair.row_sum.data.tobytes())
@@ -100,13 +103,14 @@ def sum_each_of_first_two_files(dfA:pd.DataFrame, hashtable) -> None:
 def find_differences_in_third_file(df:pd.DataFrame):
     matches = []
     match = None
-    for idxC, rowC in df.iterrows():
+    for rowC in df.itertuples(index=False):
         # The values call is necessary because np.subtract here returns the original
         # data type which is a Pandas series. This way we get an nparray instead where
         # we can call the data.
-        difference = np.subtract(LAMBDA, rowC).values
+        difference = np.subtract(LAMBDA, rowC)
         key = hash(difference.data.tobytes())
         value = hashtable.get(key)
+
         if value is not None:
             for v in value:
                 match = (tuple(v.rowA), tuple(v.rowB), tuple(rowC))
@@ -139,3 +143,4 @@ if __name__ == "__main__":
 
 #https://stackoverflow.com/questions/40357434/pandas-df-iterrow-parallelization
 #https://stackoverflow.com/questions/38393269/fill-up-a-dictionary-in-parallel-with-multiprocessing
+# https://stackoverflow.com/questions/24870953/does-iterrows-have-performance-issues
