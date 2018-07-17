@@ -1,50 +1,16 @@
-#cython: language_level=3, boundscheck=False, wraparound=False, infer_types=True
+#cython: language_level=3, boundscheck=False, wraparound=False, infer_types=False
 
 #access to NumPy-Python functions,
 import numpy as np
 #access to Numpy C API
 cimport numpy as np
-import multiprocessing as mp
 from itertools import islice
-from os import environ
-
-########################################### CHANGE ME #################################################
-# DATA_PATH = CURRENT WORKING DIRECTORY
-# Determine if we're on sharcnet or local
-cdef DATA_PATH
-if environ.get("CLUSTER") is not None:
-    DATA_PATH = "/project/rohe8957"
-else:
-    DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
-    # DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
-
-cdef FILE1_NAME = "A.txt"
-
-cdef FILE2_NAME = "B.txt"
-
-cdef FILE3_NAME = "C.txt"
-
-cdef int LAMBDA = 180
-
-cdef int NUM_OF_COLS = 40
-########################################## END OF CHANGE ME ############################################
-
-# Passed into the `pd.read_table` in order to ensure that there are 40 columns provided
-cdef list LIST_OF_COLS = list(range(0, NUM_OF_COLS))
 
 # DTYPE for this, which is assigned to the usual NumPy runtime
 # type info object.
 # IMPORTANT - MAKE SURE ALL MATHEMATICAL OPERATIONS USE THE SAME DATATYPE. Otherwise, operations
 # will introduce different integer types resulting in different hashing values.
-cdef DTYPE = np.intc
-
-cdef FILE_TEMPLATE = "{}/{}"
-# http://gouthamanbalaraman.com/blog/numpy-vs-pandas-comparison.html
-cdef np.ndarray A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-cdef np.ndarray B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-cdef np.ndarray C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-# Used for some checks to skip rows
-#C_MAX = np.max(C.max(axis=1, numeric_only=True))
+cdef DTYPE = np.short
 
 cdef class RowPair:
     """
@@ -73,7 +39,30 @@ cdef class RowPair:
     def __hash__(self):
         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
 
-def chunk_dataframe(np.ndarray df, int n):
+# Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
+# we're going to create our own read file array.
+def iter_loadtxt(str filename, str delimiter):
+    cdef:
+        int rowlength = -1
+        str line = None
+        str line_str = None
+        np.ndarray data
+    def iter_func():
+        with open(filename, 'r') as infile:
+            for line_str in infile:
+                line = line_str.rstrip().split(delimiter)
+                for item in line:
+                    yield DTYPE(item)
+        nonlocal rowlength
+        if (rowlength < 0):
+            rowlength = len(line)
+
+    data = np.fromiter(iter_func(), dtype=DTYPE)
+    # One colum can be returned as -1 ==>
+    data = data.reshape((-1, rowlength))
+    return data
+
+cpdef chunk_dataframe(np.ndarray df, int n):
     assert n > 0, "# of chunks must be greater than zero"
     #chunk_size = int(df.shape[0] / n)
     # will work even if the length of the dataframe is not evenly divisible by num_processes
@@ -81,34 +70,38 @@ def chunk_dataframe(np.ndarray df, int n):
     cdef list chunks = np.array_split(df, n, axis=0)
     return chunks
 
-def chunk_hashtable(dict ht, int N):
-    cdef int i
-    cdef np.int64_t key
-    cdef _iter = iter(ht)
-    cdef int dict_len = len(ht)
+def chunk_hashtable(dict ht, short N):
+    cdef:
+        size_t i
+        np.int64_t key
+        object _iter = iter(ht)
+        int dict_len = len(ht)
     for i in range(0, dict_len, N):
         yield {key: ht[key] for key in islice(_iter, N)}
 
+cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
+    cdef:
+        RowPair rowpair = None
+        # Since insert operations are very slow, we're going to do all the
+        # insertions at once. This is significantly faster.
+        dict _hashtable = dict()
 
-def sum_each_of_first_two_files(np.ndarray dfA):
-    cdef RowPair rowpair = None
-    # Since insert operations are very slow, we're going to do all the
-    # insertions at once. This is significantly faster.
-    cdef dict _hashtable = dict()
+        size_t a, b
+        # It is very important to type ALL your variables. You do not get any
+        # warnings if not, only much slower code (they are implicitly typed as
+        # Python objects).
+        np.ndarray rowA, rowB
 
-    # It is very important to type ALL your variables. You do not get any
-    # warnings if not, only much slower code (they are implicitly typed as
-    # Python objects).
-    cdef np.ndarray rowA, rowB
-    cdef np.int64_t key
-    cdef set value
+        # This must be an int64 as the hashed key is too large for a short
+        np.int64_t key
+        set value
 
-    # Name = None => Iterates with normal tuples instead of named tuples.
-    # This is important as pickle fails when the tuple is named so that
-    # parameter is required.
-    for rowA in dfA:
-        for rowB in B:
-            rowpair = RowPair(rowA, rowB)
+        unsigned long LEN_A = dfA.shape[0]
+        unsigned long LEN_B = dfB.shape[0]
+
+    for a in range(LEN_A):
+        for b in range(LEN_B):
+            rowpair = RowPair(dfA[a], dfB[b])
             # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
             key = hash(rowpair.row_sum.tobytes())
             value = _hashtable.get(key)
@@ -124,19 +117,23 @@ def sum_each_of_first_two_files(np.ndarray dfA):
                 # _hashtable[key].append(rowpair)
     return _hashtable
 
-def find_differences_in_third_file(int [:, :] df, hashtable):
-    cdef list matches = []
-    cdef tuple match = None
-    cdef int[:] rowC
-    cdef RowPair rowpair = None
-    cdef np.int64_t key
-    cdef set value
-    cdef np.ndarray difference
-    for rowC in df:
+cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):
+    cdef:
+        np.int64_t key
+        set value
+        np.ndarray difference
+        unsigned long LEN_C = df.shape[0]
+        size_t c
+
+        list matches = []
+        tuple match = None
+        RowPair rowpair = None
+
+    for c in range(LEN_C):
         # The values call is necessary because np.subtract here returns the original
         # data type which is a Pandas series. This way we get an nparray instead where
         # we can call the data.
-        difference = np.subtract(LAMBDA, rowC, dtype=DTYPE)
+        difference = np.subtract(LAMBDA, df[c], dtype=DTYPE)
         # if difference[6] == 143 and difference[8] == 143 and difference[0] == 143:
         #     print(difference, hash(difference.tobytes()))
         key = hash(difference.tobytes())
@@ -144,9 +141,6 @@ def find_differences_in_third_file(int [:, :] df, hashtable):
 
         if value is not None:
             for rowpair in value:
-                match = (tuple(rowpair.rowA), tuple(rowpair.rowB), tuple(rowC))
+                match = (tuple(rowpair.rowA), tuple(rowpair.rowB), tuple(df[c]))
                 matches.append(match)
     return matches
-
-#https://stackoverflow.com/questions/40357434/pandas-df-iterrow-parallelization
-#https://stackoverflow.com/questions/38393269/fill-up-a-dictionary-in-parallel-with-multiprocessing

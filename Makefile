@@ -8,6 +8,10 @@ local:
 run:
 	${PYTHON} run.py
 
+annotate:
+	cythonize -a threesum.pyx
+	open threesum.html
+
 clean:
 	@echo Cleaning Prevoius Builds
 	@rm -rf ./mikeroher/

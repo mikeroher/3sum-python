@@ -1,20 +1,18 @@
 import numpy as np
 import multiprocessing as mp
 from os import environ
-import itertools
+from itertools import repeat
 import _timing
 
 try:
     # On local machine, it compiles to the nested path
     from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, \
-        find_differences_in_third_file, chunk_dataframe, chunk_hashtable
+        find_differences_in_third_file, chunk_dataframe, chunk_hashtable, iter_loadtxt
 except ImportError:
     # On Sharcnet it compiles to just threesum
-    from threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe, chunk_hashtable
+    from threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe, chunk_hashtable, iter_loadtxt
 
 ########################################### CHANGE ME #################################################
-# Set width for output
-OUTPUT_WIDTH = 320
 
 # DATA_PATH = CURRENT WORKING DIRECTORY
 # Determine if we're on sharcnet or local
@@ -32,34 +30,35 @@ FILE3_NAME = "C.txt"
 
 OUTPUT_FILENAME = f"{DATA_PATH}/3sum_output.txt"
 
-LAMBDA = 180
-
-NUM_OF_COLS = 40
-
 # When updating the dictionary, don't do it all at once.
 # Split it into chunks and insert each chunk.
 HASHTABLE_CHUNK_SIZE = 100
+
+LAMBDA = 180
 
 # Number of processors to use for multiprocessing
 NUM_OF_PROCESSES = mp.cpu_count()
 ########################################## END OF CHANGE ME ############################################
 
-# Passed into the `pd.read_table` in order to ensure that there are 40 columns provided
-LIST_OF_COLS = list(range(0, NUM_OF_COLS))
-
 FILE_TEMPLATE = "{}/{}"
 
-DTYPE = np.intc
+# Must be short or at least match the DTPE constant in `threesum.pyx`
+DTYPE = np.short
 
-A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+A = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ")
+B = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ")
+C = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ")
+
+#print(A)
+#A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+# B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+# C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
 
 manager = mp.Manager()
 
 hashtable = manager.dict()
 
-_hashtable = sum_each_of_first_two_files(A)
+_hashtable = sum_each_of_first_two_files(A, B)
 for chunk in chunk_hashtable(_hashtable, HASHTABLE_CHUNK_SIZE):
     hashtable.update(chunk)
 
@@ -69,11 +68,12 @@ pool = mp.Pool(processes=NUM_OF_PROCESSES)
 third_file_chunked = chunk_dataframe(C, NUM_OF_PROCESSES)
 # apply our function to each chunk in the list
 
-matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, itertools.repeat(hashtable)))
-pool.close()
+#matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, itertools.repeat(hashtable)))
+matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, repeat(hashtable), repeat(LAMBDA)))
 
 pool.close()
 pool.join()
+
 file = open(OUTPUT_FILENAME, "w+")
 for match_tuple in matches:
     for match in match_tuple:
