@@ -14,7 +14,13 @@ cdef DTYPE = np.short
 
 cdef class RowPair:
     """
-    Wrapper for two row vectors and calculates the column wise sum
+    Wrapper for two row vectors and calculates the column wise sum.
+    This class wraps the row vectors and is stored in the dictionary's
+    value for the row sum. For example, the dictionary's key would be a
+    sum, suppose 50. Then, the value of that dictionary would be a list
+    of Rowpair objects, where each row_sum attribute is 50.
+
+    Public variables exist for rowA, rowB and the row sum.
 
     Keyword arguments:
         rowA, '1xm'-dimensional numpy array
@@ -31,6 +37,10 @@ cdef class RowPair:
     def __init__(self, np.ndarray rowA, np.ndarray rowB):
         self.rowA = rowA
         self.rowB = rowB
+        # Align the two rows on top of each other, then sum down (i.e. each column).
+        # Thus, the the input is two row vectors, each `1xn`. The output of the
+        # column stack is a numpy array 2xn which is passed into np.sum resulting
+        # in a 1xn vector holding the sum.
         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
 
     def __eq__(self, other):
@@ -39,9 +49,16 @@ cdef class RowPair:
     def __hash__(self):
         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
 
-# Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
-# we're going to create our own read file array.
 def iter_loadtxt(str filename, str delimiter):
+    """
+    Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
+    loadtxt and genfromtxt do a lot of guesswork and error checking,
+    we're going to create our own read file array.
+
+    :param str filename: The filename to read into a numpy array
+    :param str delimiter: The delimeter to split each column by (typically a space " ")
+    :return np.ndarray:
+    """
     cdef:
         int rowlength = -1
         str line = None
@@ -84,7 +101,7 @@ cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
         RowPair rowpair = None
         # Since insert operations are very slow, we're going to do all the
         # insertions at once. This is significantly faster.
-        dict _hashtable = dict()
+        dict hashtable = {}
 
         size_t a, b
         # It is very important to type ALL your variables. You do not get any
@@ -104,18 +121,18 @@ cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
             rowpair = RowPair(dfA[a], dfB[b])
             # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
             key = hash(rowpair.row_sum.tobytes())
-            value = _hashtable.get(key)
+            value = hashtable.get(key)
 
             # if rowpair.row_sum[6] == 143 and rowpair.row_sum[8] == 143 and rowpair.row_sum[0] == 143:
             #     print(rowpair.row_sum, hash(rowpair.row_sum.tobytes()))
 
             if value is None:
-                _hashtable[key] = set([rowpair])
+                hashtable[key] = set([rowpair])
                 # _hashtable[key] = [rowpair]
             else:
-                _hashtable[key].add(rowpair)
+                hashtable[key].add(rowpair)
                 # _hashtable[key].append(rowpair)
-    return _hashtable
+    return hashtable
 
 cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):
     cdef:

@@ -5552,7 +5552,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
   /* "mikeroher/threesum.pyx":87
  *         # Since insert operations are very slow, we're going to do all the
  *         # insertions at once. This is significantly faster.
- *         dict _hashtable = dict()             # <<<<<<<<<<<<<<
+ *         dict _hashtable = {}             # <<<<<<<<<<<<<<
  * 
  *         size_t a, b
  */

@@ -2587,7 +2587,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7sum_each_of_first_two_files(CYTH
   __pyx_v_rowpair = ((struct __pyx_obj_9mikeroher_8threesum_RowPair *)Py_None);
 </pre><pre class="cython line score-0">&#xA0;<span class="">085</span>:         <span class="c"># Since insert operations are very slow, we&#39;re going to do all the</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">086</span>:         <span class="c"># insertions at once. This is significantly faster.</span></pre>
-<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">087</span>:         <span class="nb">dict</span> <span class="n">_hashtable</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span></pre>
+<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">087</span>:         <span class="nb">dict</span> <span class="n">_hashtable</span> <span class="o">=</span> <span class="p">{}</span></pre>
 <pre class='cython code score-2 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyDict_NewPresized</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_v__hashtable = ((PyObject*)__pyx_t_1);

@@ -48,6 +48,7 @@ DTYPE = np.short
 A = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ")
 B = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ")
 C = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ")
+MAX_C = np.amax(C, axis=0)
 
 #print(A)
 #A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
@@ -56,11 +57,11 @@ C = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ")
 
 manager = mp.Manager()
 
-hashtable = manager.dict()
+# hashtable = manager.dict()
 
-_hashtable = sum_each_of_first_two_files(A, B)
-for chunk in chunk_hashtable(_hashtable, HASHTABLE_CHUNK_SIZE):
-    hashtable.update(chunk)
+hashtable = sum_each_of_first_two_files(A, B)
+# for chunk in chunk_hashtable(_hashtable, HASHTABLE_CHUNK_SIZE):
+#     hashtable.update(chunk)
 
 pool = mp.Pool(processes=NUM_OF_PROCESSES)
 # create our pool with `num_processes` processes
@@ -80,3 +81,8 @@ for match_tuple in matches:
         print(match, file=file)
         print(match)
 file.close()
+
+
+# https://stackoverflow.com/questions/14749897/python-multiprocessing-memory-usage
+#https://stackoverflow.com/questions/34279750/cython-reducing-the-size-of-a-class-reduce-memory-use-improve-speed
+# CONVERT TO MPI?
