@@ -1185,7 +1185,7 @@ typedef npy_cdouble __pyx_t_5numpy_complex_t;
  * 
  * cdef class RowPair:             # <<<<<<<<<<<<<<
  *     """
- *     Wrapper for two row vectors and calculates the column wise sum
+ *     Wrapper for two row vectors and calculates the column wise sum.
  */
 struct __pyx_obj_9mikeroher_8threesum_RowPair {
   PyObject_HEAD
@@ -1195,12 +1195,12 @@ struct __pyx_obj_9mikeroher_8threesum_RowPair {
 };
 
 
-/* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+/* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
 struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt {
   PyObject_HEAD
@@ -1210,7 +1210,7 @@ struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt {
 };
 
 
-/* "mikeroher/threesum.pyx":50
+/* "mikeroher/threesum.pyx":67
  *         str line_str = None
  *         np.ndarray data
  *     def iter_func():             # <<<<<<<<<<<<<<
@@ -1237,7 +1237,7 @@ struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct_1_iter_func {
 };
 
 
-/* "mikeroher/threesum.pyx":73
+/* "mikeroher/threesum.pyx":90
  *     return chunks
  * 
  * def chunk_hashtable(dict ht, short N):             # <<<<<<<<<<<<<<
@@ -2820,7 +2820,7 @@ static PyObject *__pyx_codeobj__39;
 static PyObject *__pyx_codeobj__46;
 /* Late includes */
 
-/* "mikeroher/threesum.pyx":31
+/* "mikeroher/threesum.pyx":37
  * 
  *     __slots__ = ['rowA', 'rowB', 'row_sum']
  *     def __init__(self, np.ndarray rowA, np.ndarray rowB):             # <<<<<<<<<<<<<<
@@ -2859,11 +2859,11 @@ static int __pyx_pw_9mikeroher_8threesum_7RowPair_1__init__(PyObject *__pyx_v_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_rowB)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 37, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 37, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2876,14 +2876,14 @@ static int __pyx_pw_9mikeroher_8threesum_7RowPair_1__init__(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 37, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.RowPair.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rowA), __pyx_ptype_5numpy_ndarray, 1, "rowA", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rowB), __pyx_ptype_5numpy_ndarray, 1, "rowB", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rowA), __pyx_ptype_5numpy_ndarray, 1, "rowA", 0))) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rowB), __pyx_ptype_5numpy_ndarray, 1, "rowB", 0))) __PYX_ERR(0, 37, __pyx_L1_error)
   __pyx_r = __pyx_pf_9mikeroher_8threesum_7RowPair___init__(((struct __pyx_obj_9mikeroher_8threesum_RowPair *)__pyx_v_self), __pyx_v_rowA, __pyx_v_rowB);
 
   /* function exit code */
@@ -2906,12 +2906,12 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "mikeroher/threesum.pyx":32
+  /* "mikeroher/threesum.pyx":38
  *     __slots__ = ['rowA', 'rowB', 'row_sum']
  *     def __init__(self, np.ndarray rowA, np.ndarray rowB):
  *         self.rowA = rowA             # <<<<<<<<<<<<<<
  *         self.rowB = rowB
- *         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
+ *         # Align the two rows on top of each other, then sum down (i.e. each column).
  */
   __Pyx_INCREF(((PyObject *)__pyx_v_rowA));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_rowA));
@@ -2919,12 +2919,12 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
   __Pyx_DECREF(((PyObject *)__pyx_v_self->rowA));
   __pyx_v_self->rowA = __pyx_v_rowA;
 
-  /* "mikeroher/threesum.pyx":33
+  /* "mikeroher/threesum.pyx":39
  *     def __init__(self, np.ndarray rowA, np.ndarray rowB):
  *         self.rowA = rowA
  *         self.rowB = rowB             # <<<<<<<<<<<<<<
- *         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
- * 
+ *         # Align the two rows on top of each other, then sum down (i.e. each column).
+ *         # Thus, the the input is two row vectors, each `1xn`. The output of the
  */
   __Pyx_INCREF(((PyObject *)__pyx_v_rowB));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_rowB));
@@ -2932,24 +2932,24 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
   __Pyx_DECREF(((PyObject *)__pyx_v_self->rowB));
   __pyx_v_self->rowB = __pyx_v_rowB;
 
-  /* "mikeroher/threesum.pyx":34
- *         self.rowA = rowA
- *         self.rowB = rowB
+  /* "mikeroher/threesum.pyx":44
+ *         # column stack is a numpy array 2xn which is passed into np.sum resulting
+ *         # in a 1xn vector holding the sum.
  *         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)             # <<<<<<<<<<<<<<
  * 
  *     def __eq__(self, other):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)__pyx_v_rowA));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_rowA));
@@ -2968,14 +2968,14 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2984,47 +2984,47 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 34, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_6);
   __Pyx_GOTREF(__pyx_v_self->row_sum);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->row_sum));
   __pyx_v_self->row_sum = ((PyArrayObject *)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "mikeroher/threesum.pyx":31
+  /* "mikeroher/threesum.pyx":37
  * 
  *     __slots__ = ['rowA', 'rowB', 'row_sum']
  *     def __init__(self, np.ndarray rowA, np.ndarray rowB):             # <<<<<<<<<<<<<<
@@ -3049,7 +3049,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":36
+/* "mikeroher/threesum.pyx":46
  *         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
  * 
  *     def __eq__(self, other):             # <<<<<<<<<<<<<<
@@ -3083,7 +3083,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("__eq__", 0);
 
-  /* "mikeroher/threesum.pyx":37
+  /* "mikeroher/threesum.pyx":47
  * 
  *     def __eq__(self, other):
  *         return np.array_equal(self.rowA, other.rowA) and np.array_equal(self.rowB, other.rowB)             # <<<<<<<<<<<<<<
@@ -3091,12 +3091,12 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
  *     def __hash__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array_equal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array_equal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_rowA); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_rowA); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -3113,7 +3113,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, ((PyObject *)__pyx_v_self->rowA), __pyx_t_3};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3122,14 +3122,14 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, ((PyObject *)__pyx_v_self->rowA), __pyx_t_3};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -3140,12 +3140,12 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 47, __pyx_L1_error)
   if (__pyx_t_8) {
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
@@ -3154,12 +3154,12 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array_equal); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array_equal); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_rowB); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_rowB); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = NULL;
   __pyx_t_6 = 0;
@@ -3176,7 +3176,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, ((PyObject *)__pyx_v_self->rowB), __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3185,14 +3185,14 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, ((PyObject *)__pyx_v_self->rowB), __pyx_t_4};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3203,7 +3203,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3216,7 +3216,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":36
+  /* "mikeroher/threesum.pyx":46
  *         self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
  * 
  *     def __eq__(self, other):             # <<<<<<<<<<<<<<
@@ -3240,7 +3240,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2__eq__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":39
+/* "mikeroher/threesum.pyx":49
  *         return np.array_equal(self.rowA, other.rowA) and np.array_equal(self.rowB, other.rowB)
  * 
  *     def __hash__(self):             # <<<<<<<<<<<<<<
@@ -3273,19 +3273,19 @@ static Py_hash_t __pyx_pf_9mikeroher_8threesum_7RowPair_4__hash__(struct __pyx_o
   Py_hash_t __pyx_t_7;
   __Pyx_RefNannySetupContext("__hash__", 0);
 
-  /* "mikeroher/threesum.pyx":40
+  /* "mikeroher/threesum.pyx":50
  * 
  *     def __hash__(self):
  *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())             # <<<<<<<<<<<<<<
  * 
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
+ * def iter_loadtxt(str filename, str delimiter):
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->rowA));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->rowA));
@@ -3304,14 +3304,14 @@ static Py_hash_t __pyx_pf_9mikeroher_8threesum_7RowPair_4__hash__(struct __pyx_o
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3320,29 +3320,29 @@ static Py_hash_t __pyx_pf_9mikeroher_8threesum_7RowPair_4__hash__(struct __pyx_o
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -3356,19 +3356,19 @@ static Py_hash_t __pyx_pf_9mikeroher_8threesum_7RowPair_4__hash__(struct __pyx_o
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = PyObject_Hash(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_hash_t)-1))) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Hash(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_hash_t)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_7;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":39
+  /* "mikeroher/threesum.pyx":49
  *         return np.array_equal(self.rowA, other.rowA) and np.array_equal(self.rowB, other.rowB)
  * 
  *     def __hash__(self):             # <<<<<<<<<<<<<<
@@ -3392,7 +3392,7 @@ static Py_hash_t __pyx_pf_9mikeroher_8threesum_7RowPair_4__hash__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":26
+/* "mikeroher/threesum.pyx":32
  *     """
  *     cdef public:
  *         np.ndarray rowA             # <<<<<<<<<<<<<<
@@ -3447,7 +3447,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair_4rowA_2__set__(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3497,7 +3497,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair_4rowA_4__del__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":27
+/* "mikeroher/threesum.pyx":33
  *     cdef public:
  *         np.ndarray rowA
  *         np.ndarray rowB             # <<<<<<<<<<<<<<
@@ -3552,7 +3552,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair_4rowB_2__set__(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 33, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3602,7 +3602,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair_4rowB_4__del__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":28
+/* "mikeroher/threesum.pyx":34
  *         np.ndarray rowA
  *         np.ndarray rowB
  *         np.ndarray row_sum             # <<<<<<<<<<<<<<
@@ -3657,7 +3657,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair_7row_sum_2__set__(struct __pyx
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4018,17 +4018,18 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_8__setstate_cython__(str
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+/* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_9mikeroher_8threesum_1iter_loadtxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_9mikeroher_8threesum_1iter_loadtxt = {"iter_loadtxt", (PyCFunction)__pyx_pw_9mikeroher_8threesum_1iter_loadtxt, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_9mikeroher_8threesum_iter_loadtxt[] = "\n    Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's\n    loadtxt and genfromtxt do a lot of guesswork and error checking,\n    we're going to create our own read file array.\n\n    :param str filename: The filename to read into a numpy array\n    :param str delimiter: The delimeter to split each column by (typically a space \" \")\n    :return np.ndarray:\n    ";
+static PyMethodDef __pyx_mdef_9mikeroher_8threesum_1iter_loadtxt = {"iter_loadtxt", (PyCFunction)__pyx_pw_9mikeroher_8threesum_1iter_loadtxt, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9mikeroher_8threesum_iter_loadtxt};
 static PyObject *__pyx_pw_9mikeroher_8threesum_1iter_loadtxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_filename = 0;
   PyObject *__pyx_v_delimiter = 0;
@@ -4058,11 +4059,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_1iter_loadtxt(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_delimiter)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("iter_loadtxt", 1, 2, 2, 1); __PYX_ERR(0, 44, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("iter_loadtxt", 1, 2, 2, 1); __PYX_ERR(0, 52, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "iter_loadtxt") < 0)) __PYX_ERR(0, 44, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "iter_loadtxt") < 0)) __PYX_ERR(0, 52, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4075,14 +4076,14 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_1iter_loadtxt(PyObject *__pyx_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("iter_loadtxt", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 44, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("iter_loadtxt", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 52, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.iter_loadtxt", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyUnicode_Type), 1, "filename", 1))) __PYX_ERR(0, 44, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_delimiter), (&PyUnicode_Type), 1, "delimiter", 1))) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filename), (&PyUnicode_Type), 1, "filename", 1))) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_delimiter), (&PyUnicode_Type), 1, "delimiter", 1))) __PYX_ERR(0, 52, __pyx_L1_error)
   __pyx_r = __pyx_pf_9mikeroher_8threesum_iter_loadtxt(__pyx_self, __pyx_v_filename, __pyx_v_delimiter);
 
   /* function exit code */
@@ -4095,7 +4096,7 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_1iter_loadtxt(PyObject *__pyx_sel
 }
 static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "mikeroher/threesum.pyx":50
+/* "mikeroher/threesum.pyx":67
  *         str line_str = None
  *         np.ndarray data
  *     def iter_func():             # <<<<<<<<<<<<<<
@@ -4126,7 +4127,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_12iter_loadtxt_iter_func(PyObject
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct_1_iter_func *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 50, __pyx_L1_error)
+    __PYX_ERR(0, 67, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4134,7 +4135,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_12iter_loadtxt_iter_func(PyObject
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_func, __pyx_n_s_iter_loadtxt_locals_iter_func, __pyx_n_s_mikeroher_threesum); if (unlikely(!gen)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_func, __pyx_n_s_iter_loadtxt_locals_iter_func, __pyx_n_s_mikeroher_threesum); if (unlikely(!gen)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4181,9 +4182,9 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 67, __pyx_L1_error)
 
-  /* "mikeroher/threesum.pyx":51
+  /* "mikeroher/threesum.pyx":68
  *         np.ndarray data
  *     def iter_func():
  *         with open(filename, 'r') as infile:             # <<<<<<<<<<<<<<
@@ -4191,8 +4192,8 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
  *                 line = line_str.rstrip().split(delimiter)
  */
   /*with:*/ {
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_filename)) { __Pyx_RaiseClosureNameError("filename"); __PYX_ERR(0, 51, __pyx_L1_error) }
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_filename)) { __Pyx_RaiseClosureNameError("filename"); __PYX_ERR(0, 68, __pyx_L1_error) }
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_filename);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_filename);
@@ -4200,12 +4201,12 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
     __Pyx_INCREF(__pyx_n_u_r);
     __Pyx_GIVEREF(__pyx_n_u_r);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_r);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L4_error)
+    __pyx_t_4 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -4218,10 +4219,10 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L4_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L4_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L4_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4239,7 +4240,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
           __pyx_cur_scope->__pyx_v_infile = __pyx_t_4;
           __pyx_t_4 = 0;
 
-          /* "mikeroher/threesum.pyx":52
+          /* "mikeroher/threesum.pyx":69
  *     def iter_func():
  *         with open(filename, 'r') as infile:
  *             for line_str in infile:             # <<<<<<<<<<<<<<
@@ -4250,26 +4251,26 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
             __pyx_t_4 = __pyx_cur_scope->__pyx_v_infile; __Pyx_INCREF(__pyx_t_4); __pyx_t_9 = 0;
             __pyx_t_10 = NULL;
           } else {
-            __pyx_t_9 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_infile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L8_error)
+            __pyx_t_9 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_infile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_10 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 52, __pyx_L8_error)
+            __pyx_t_10 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 69, __pyx_L8_error)
           }
           for (;;) {
             if (likely(!__pyx_t_10)) {
               if (likely(PyList_CheckExact(__pyx_t_4))) {
                 if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_4)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L8_error)
+                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L8_error)
                 #else
-                __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L8_error)
+                __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
               } else {
                 if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 52, __pyx_L8_error)
+                __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L8_error)
                 #else
-                __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L8_error)
+                __pyx_t_2 = PySequence_ITEM(__pyx_t_4, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
               }
@@ -4279,7 +4280,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 52, __pyx_L8_error)
+                  else __PYX_ERR(0, 69, __pyx_L8_error)
                 }
                 break;
               }
@@ -4290,14 +4291,14 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
             __Pyx_GIVEREF(__pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "mikeroher/threesum.pyx":53
+            /* "mikeroher/threesum.pyx":70
  *         with open(filename, 'r') as infile:
  *             for line_str in infile:
  *                 line = line_str.rstrip().split(delimiter)             # <<<<<<<<<<<<<<
  *                 for item in line:
  *                     yield DTYPE(item)
  */
-            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_line_str, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L8_error)
+            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_line_str, __pyx_n_s_rstrip); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_5);
             __pyx_t_11 = NULL;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -4310,17 +4311,17 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               }
             }
             if (__pyx_t_11) {
-              __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L8_error)
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             } else {
-              __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L8_error)
+              __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L8_error)
             }
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L8_error)
+            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 70, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter)) { __Pyx_RaiseClosureNameError("delimiter"); __PYX_ERR(0, 53, __pyx_L8_error) }
+            if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter)) { __Pyx_RaiseClosureNameError("delimiter"); __PYX_ERR(0, 70, __pyx_L8_error) }
             __pyx_t_1 = NULL;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
               __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
@@ -4332,13 +4333,13 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               }
             }
             if (!__pyx_t_1) {
-              __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L8_error)
+              __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
             } else {
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_5)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter};
-                __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L8_error)
                 __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_GOTREF(__pyx_t_2);
               } else
@@ -4346,19 +4347,19 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter};
-                __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L8_error)
                 __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                 __Pyx_GOTREF(__pyx_t_2);
               } else
               #endif
               {
-                __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 53, __pyx_L8_error)
+                __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 70, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_11);
                 __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1); __pyx_t_1 = NULL;
                 __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter);
                 __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter);
                 PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_delimiter);
-                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L8_error)
+                __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               }
@@ -4369,7 +4370,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
             __Pyx_GIVEREF(__pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "mikeroher/threesum.pyx":54
+            /* "mikeroher/threesum.pyx":71
  *             for line_str in infile:
  *                 line = line_str.rstrip().split(delimiter)
  *                 for item in line:             # <<<<<<<<<<<<<<
@@ -4380,26 +4381,26 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               __pyx_t_2 = __pyx_cur_scope->__pyx_v_line; __Pyx_INCREF(__pyx_t_2); __pyx_t_12 = 0;
               __pyx_t_13 = NULL;
             } else {
-              __pyx_t_12 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L8_error)
+              __pyx_t_12 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_13 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 54, __pyx_L8_error)
+              __pyx_t_13 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 71, __pyx_L8_error)
             }
             for (;;) {
               if (likely(!__pyx_t_13)) {
                 if (likely(PyList_CheckExact(__pyx_t_2))) {
                   if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_2)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 54, __pyx_L8_error)
+                  __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 71, __pyx_L8_error)
                   #else
-                  __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L8_error)
+                  __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L8_error)
                   __Pyx_GOTREF(__pyx_t_5);
                   #endif
                 } else {
                   if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 54, __pyx_L8_error)
+                  __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_12); __Pyx_INCREF(__pyx_t_5); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 71, __pyx_L8_error)
                   #else
-                  __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L8_error)
+                  __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L8_error)
                   __Pyx_GOTREF(__pyx_t_5);
                   #endif
                 }
@@ -4409,7 +4410,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
                   PyObject* exc_type = PyErr_Occurred();
                   if (exc_type) {
                     if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                    else __PYX_ERR(0, 54, __pyx_L8_error)
+                    else __PYX_ERR(0, 71, __pyx_L8_error)
                   }
                   break;
                 }
@@ -4420,7 +4421,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               __Pyx_GIVEREF(__pyx_t_5);
               __pyx_t_5 = 0;
 
-              /* "mikeroher/threesum.pyx":55
+              /* "mikeroher/threesum.pyx":72
  *                 line = line_str.rstrip().split(delimiter)
  *                 for item in line:
  *                     yield DTYPE(item)             # <<<<<<<<<<<<<<
@@ -4439,13 +4440,13 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
                 }
               }
               if (!__pyx_t_1) {
-                __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_cur_scope->__pyx_v_item); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L8_error)
+                __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_cur_scope->__pyx_v_item); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L8_error)
                 __Pyx_GOTREF(__pyx_t_5);
               } else {
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_11)) {
                   PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_cur_scope->__pyx_v_item};
-                  __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L8_error)
+                  __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L8_error)
                   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                   __Pyx_GOTREF(__pyx_t_5);
                 } else
@@ -4453,19 +4454,19 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
                   PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_cur_scope->__pyx_v_item};
-                  __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L8_error)
+                  __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L8_error)
                   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
                   __Pyx_GOTREF(__pyx_t_5);
                 } else
                 #endif
                 {
-                  __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 55, __pyx_L8_error)
+                  __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 72, __pyx_L8_error)
                   __Pyx_GOTREF(__pyx_t_14);
                   __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1); __pyx_t_1 = NULL;
                   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_item);
                   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_item);
                   PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_cur_scope->__pyx_v_item);
-                  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 55, __pyx_L8_error)
+                  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L8_error)
                   __Pyx_GOTREF(__pyx_t_5);
                   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
                 }
@@ -4518,9 +4519,9 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
               __pyx_t_10 = __pyx_cur_scope->__pyx_t_7;
               __pyx_t_12 = __pyx_cur_scope->__pyx_t_8;
               __pyx_t_13 = __pyx_cur_scope->__pyx_t_9;
-              if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 55, __pyx_L8_error)
+              if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 72, __pyx_L8_error)
 
-              /* "mikeroher/threesum.pyx":54
+              /* "mikeroher/threesum.pyx":71
  *             for line_str in infile:
  *                 line = line_str.rstrip().split(delimiter)
  *                 for item in line:             # <<<<<<<<<<<<<<
@@ -4530,7 +4531,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
             }
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "mikeroher/threesum.pyx":52
+            /* "mikeroher/threesum.pyx":69
  *     def iter_func():
  *         with open(filename, 'r') as infile:
  *             for line_str in infile:             # <<<<<<<<<<<<<<
@@ -4540,7 +4541,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "mikeroher/threesum.pyx":51
+          /* "mikeroher/threesum.pyx":68
  *         np.ndarray data
  *     def iter_func():
  *         with open(filename, 'r') as infile:             # <<<<<<<<<<<<<<
@@ -4561,20 +4562,20 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("mikeroher.threesum.iter_loadtxt.iter_func", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_5) < 0) __PYX_ERR(0, 51, __pyx_L10_except_error)
+          if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_2, &__pyx_t_5) < 0) __PYX_ERR(0, 68, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_11 = PyTuple_Pack(3, __pyx_t_4, __pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 51, __pyx_L10_except_error)
+          __pyx_t_11 = PyTuple_Pack(3, __pyx_t_4, __pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 68, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_11);
           __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 51, __pyx_L10_except_error)
+          if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 68, __pyx_L10_except_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_15);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          if (__pyx_t_16 < 0) __PYX_ERR(0, 51, __pyx_L10_except_error)
+          if (__pyx_t_16 < 0) __PYX_ERR(0, 68, __pyx_L10_except_error)
           __pyx_t_17 = ((!(__pyx_t_16 != 0)) != 0);
           if (__pyx_t_17) {
             __Pyx_GIVEREF(__pyx_t_4);
@@ -4582,7 +4583,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
             __Pyx_XGIVEREF(__pyx_t_5);
             __Pyx_ErrRestoreWithState(__pyx_t_4, __pyx_t_2, __pyx_t_5);
             __pyx_t_4 = 0; __pyx_t_2 = 0; __pyx_t_5 = 0; 
-            __PYX_ERR(0, 51, __pyx_L10_except_error)
+            __PYX_ERR(0, 68, __pyx_L10_except_error)
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4608,7 +4609,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
         if (__pyx_t_3) {
           __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple_, NULL);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 51, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -4623,7 +4624,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
     __pyx_L22:;
   }
 
-  /* "mikeroher/threesum.pyx":57
+  /* "mikeroher/threesum.pyx":74
  *                     yield DTYPE(item)
  *         nonlocal rowlength
  *         if (rowlength < 0):             # <<<<<<<<<<<<<<
@@ -4633,18 +4634,18 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
   __pyx_t_17 = ((__pyx_cur_scope->__pyx_outer_scope->__pyx_v_rowlength < 0) != 0);
   if (__pyx_t_17) {
 
-    /* "mikeroher/threesum.pyx":58
+    /* "mikeroher/threesum.pyx":75
  *         nonlocal rowlength
  *         if (rowlength < 0):
  *             rowlength = len(line)             # <<<<<<<<<<<<<<
  * 
  *     data = np.fromiter(iter_func(), dtype=DTYPE)
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_line)) { __Pyx_RaiseUnboundLocalError("line"); __PYX_ERR(0, 58, __pyx_L1_error) }
-    __pyx_t_9 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 58, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_line)) { __Pyx_RaiseUnboundLocalError("line"); __PYX_ERR(0, 75, __pyx_L1_error) }
+    __pyx_t_9 = PyObject_Length(__pyx_cur_scope->__pyx_v_line); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 75, __pyx_L1_error)
     __pyx_cur_scope->__pyx_outer_scope->__pyx_v_rowlength = __pyx_t_9;
 
-    /* "mikeroher/threesum.pyx":57
+    /* "mikeroher/threesum.pyx":74
  *                     yield DTYPE(item)
  *         nonlocal rowlength
  *         if (rowlength < 0):             # <<<<<<<<<<<<<<
@@ -4654,7 +4655,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "mikeroher/threesum.pyx":50
+  /* "mikeroher/threesum.pyx":67
  *         str line_str = None
  *         np.ndarray data
  *     def iter_func():             # <<<<<<<<<<<<<<
@@ -4682,12 +4683,12 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_12iter_loadtxt_2generator1(__pyx_
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+/* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
 
 static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_filename, PyObject *__pyx_v_delimiter) {
@@ -4708,7 +4709,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 44, __pyx_L1_error)
+    __PYX_ERR(0, 52, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4719,8 +4720,8 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_delimiter);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_delimiter);
 
-  /* "mikeroher/threesum.pyx":46
- * def iter_loadtxt(str filename, str delimiter):
+  /* "mikeroher/threesum.pyx":63
+ *     """
  *     cdef:
  *         int rowlength = -1             # <<<<<<<<<<<<<<
  *         str line = None
@@ -4728,7 +4729,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
  */
   __pyx_cur_scope->__pyx_v_rowlength = -1;
 
-  /* "mikeroher/threesum.pyx":47
+  /* "mikeroher/threesum.pyx":64
  *     cdef:
  *         int rowlength = -1
  *         str line = None             # <<<<<<<<<<<<<<
@@ -4738,7 +4739,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   __Pyx_INCREF(Py_None);
   __pyx_v_line = ((PyObject*)Py_None);
 
-  /* "mikeroher/threesum.pyx":48
+  /* "mikeroher/threesum.pyx":65
  *         int rowlength = -1
  *         str line = None
  *         str line_str = None             # <<<<<<<<<<<<<<
@@ -4748,61 +4749,61 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   __Pyx_INCREF(Py_None);
   __pyx_v_line_str = ((PyObject*)Py_None);
 
-  /* "mikeroher/threesum.pyx":50
+  /* "mikeroher/threesum.pyx":67
  *         str line_str = None
  *         np.ndarray data
  *     def iter_func():             # <<<<<<<<<<<<<<
  *         with open(filename, 'r') as infile:
  *             for line_str in infile:
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_12iter_loadtxt_1iter_func, 0, __pyx_n_s_iter_loadtxt_locals_iter_func, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mikeroher_threesum, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_12iter_loadtxt_1iter_func, 0, __pyx_n_s_iter_loadtxt_locals_iter_func, ((PyObject*)__pyx_cur_scope), __pyx_n_s_mikeroher_threesum, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_iter_func = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":60
+  /* "mikeroher/threesum.pyx":77
  *             rowlength = len(line)
  * 
  *     data = np.fromiter(iter_func(), dtype=DTYPE)             # <<<<<<<<<<<<<<
  *     # One colum can be returned as -1 ==>
  *     data = data.reshape((-1, rowlength))
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fromiter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_fromiter); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_pf_9mikeroher_8threesum_12iter_loadtxt_iter_func(__pyx_v_iter_func); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_9mikeroher_8threesum_12iter_loadtxt_iter_func(__pyx_v_iter_func); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 60, __pyx_L1_error)
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 77, __pyx_L1_error)
   __pyx_v_data = ((PyArrayObject *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "mikeroher/threesum.pyx":62
+  /* "mikeroher/threesum.pyx":79
  *     data = np.fromiter(iter_func(), dtype=DTYPE)
  *     # One colum can be returned as -1 ==>
  *     data = data.reshape((-1, rowlength))             # <<<<<<<<<<<<<<
  *     return data
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_data), __pyx_n_s_reshape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_data), __pyx_n_s_reshape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_rowlength); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_rowlength); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_int_neg_1);
@@ -4821,14 +4822,14 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_2};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4837,30 +4838,30 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_2};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF_SET(__pyx_v_data, ((PyArrayObject *)__pyx_t_4));
   __pyx_t_4 = 0;
 
-  /* "mikeroher/threesum.pyx":63
+  /* "mikeroher/threesum.pyx":80
  *     # One colum can be returned as -1 ==>
  *     data = data.reshape((-1, rowlength))
  *     return data             # <<<<<<<<<<<<<<
@@ -4872,12 +4873,12 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   __pyx_r = ((PyObject *)__pyx_v_data);
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+  /* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
 
   /* function exit code */
@@ -4900,7 +4901,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_iter_loadtxt(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":65
+/* "mikeroher/threesum.pyx":82
  *     return data
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):             # <<<<<<<<<<<<<<
@@ -4919,7 +4920,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(PyArrayObject *__p
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("chunk_dataframe", 0);
 
-  /* "mikeroher/threesum.pyx":66
+  /* "mikeroher/threesum.pyx":83
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):
  *     assert n > 0, "# of chunks must be greater than zero"             # <<<<<<<<<<<<<<
@@ -4930,26 +4931,26 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(PyArrayObject *__p
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_n > 0) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_of_chunks_must_be_greater_than);
-      __PYX_ERR(0, 66, __pyx_L1_error)
+      __PYX_ERR(0, 83, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "mikeroher/threesum.pyx":70
+  /* "mikeroher/threesum.pyx":87
  *     # will work even if the length of the dataframe is not evenly divisible by num_processes
  *     #chunks = [df.ix[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]
  *     cdef list chunks = np.array_split(df, n, axis=0)             # <<<<<<<<<<<<<<
  *     return chunks
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)__pyx_v_df));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_df));
@@ -4957,19 +4958,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(PyArrayObject *__p
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 70, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_v_chunks = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "mikeroher/threesum.pyx":71
+  /* "mikeroher/threesum.pyx":88
  *     #chunks = [df.ix[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]
  *     cdef list chunks = np.array_split(df, n, axis=0)
  *     return chunks             # <<<<<<<<<<<<<<
@@ -4981,7 +4982,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(PyArrayObject *__p
   __pyx_r = __pyx_v_chunks;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":65
+  /* "mikeroher/threesum.pyx":82
  *     return data
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):             # <<<<<<<<<<<<<<
@@ -5035,11 +5036,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_3chunk_dataframe(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, 1); __PYX_ERR(0, 65, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, 1); __PYX_ERR(0, 82, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_dataframe") < 0)) __PYX_ERR(0, 65, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_dataframe") < 0)) __PYX_ERR(0, 82, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5048,17 +5049,17 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_3chunk_dataframe(PyObject *__pyx_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_df = ((PyArrayObject *)values[0]);
-    __pyx_v_n = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 65, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 82, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 65, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 82, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_df), __pyx_ptype_5numpy_ndarray, 1, "df", 0))) __PYX_ERR(0, 65, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_df), __pyx_ptype_5numpy_ndarray, 1, "df", 0))) __PYX_ERR(0, 82, __pyx_L1_error)
   __pyx_r = __pyx_pf_9mikeroher_8threesum_2chunk_dataframe(__pyx_self, __pyx_v_df, __pyx_v_n);
 
   /* function exit code */
@@ -5076,7 +5077,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_2chunk_dataframe(CYTHON_UNUSED Py
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("chunk_dataframe", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_chunk_dataframe(__pyx_v_df, __pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_chunk_dataframe(__pyx_v_df, __pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5094,7 +5095,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_2chunk_dataframe(CYTHON_UNUSED Py
 }
 static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "mikeroher/threesum.pyx":73
+/* "mikeroher/threesum.pyx":90
  *     return chunks
  * 
  * def chunk_hashtable(dict ht, short N):             # <<<<<<<<<<<<<<
@@ -5134,11 +5135,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_5chunk_hashtable(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_N)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("chunk_hashtable", 1, 2, 2, 1); __PYX_ERR(0, 73, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("chunk_hashtable", 1, 2, 2, 1); __PYX_ERR(0, 90, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_hashtable") < 0)) __PYX_ERR(0, 73, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_hashtable") < 0)) __PYX_ERR(0, 90, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5147,17 +5148,17 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_5chunk_hashtable(PyObject *__pyx_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_ht = ((PyObject*)values[0]);
-    __pyx_v_N = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_N == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L3_error)
+    __pyx_v_N = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_N == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("chunk_hashtable", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 73, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("chunk_hashtable", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 90, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.chunk_hashtable", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ht), (&PyDict_Type), 1, "ht", 1))) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ht), (&PyDict_Type), 1, "ht", 1))) __PYX_ERR(0, 90, __pyx_L1_error)
   __pyx_r = __pyx_pf_9mikeroher_8threesum_4chunk_hashtable(__pyx_self, __pyx_v_ht, __pyx_v_N);
 
   /* function exit code */
@@ -5178,7 +5179,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_4chunk_hashtable(CYTHON_UNUSED Py
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 73, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -5187,7 +5188,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_4chunk_hashtable(CYTHON_UNUSED Py
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_ht);
   __pyx_cur_scope->__pyx_v_N = __pyx_v_N;
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9mikeroher_8threesum_6generator, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_chunk_hashtable, __pyx_n_s_chunk_hashtable, __pyx_n_s_mikeroher_threesum); if (unlikely(!gen)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9mikeroher_8threesum_6generator, __pyx_codeobj__4, (PyObject *) __pyx_cur_scope, __pyx_n_s_chunk_hashtable, __pyx_n_s_chunk_hashtable, __pyx_n_s_mikeroher_threesum); if (unlikely(!gen)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -5230,22 +5231,22 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "mikeroher/threesum.pyx":77
+  /* "mikeroher/threesum.pyx":94
  *         size_t i
  *         np.int64_t key
  *         object _iter = iter(ht)             # <<<<<<<<<<<<<<
  *         int dict_len = len(ht)
  *     for i in range(0, dict_len, N):
  */
-  __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_ht); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_v_ht); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v__iter = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":78
+  /* "mikeroher/threesum.pyx":95
  *         np.int64_t key
  *         object _iter = iter(ht)
  *         int dict_len = len(ht)             # <<<<<<<<<<<<<<
@@ -5254,23 +5255,23 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_ht == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 78, __pyx_L1_error)
+    __PYX_ERR(0, 95, __pyx_L1_error)
   }
-  __pyx_t_2 = PyDict_Size(__pyx_cur_scope->__pyx_v_ht); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Size(__pyx_cur_scope->__pyx_v_ht); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 95, __pyx_L1_error)
   __pyx_cur_scope->__pyx_v_dict_len = __pyx_t_2;
 
-  /* "mikeroher/threesum.pyx":79
+  /* "mikeroher/threesum.pyx":96
  *         object _iter = iter(ht)
  *         int dict_len = len(ht)
  *     for i in range(0, dict_len, N):             # <<<<<<<<<<<<<<
  *         yield {key: ht[key] for key in islice(_iter, N)}
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_dict_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_dict_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_cur_scope->__pyx_v_N); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_cur_scope->__pyx_v_N); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
@@ -5281,16 +5282,16 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
   PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_2 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -5298,17 +5299,17 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -5318,17 +5319,17 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 79, __pyx_L1_error)
+          else __PYX_ERR(0, 96, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_3);
     }
-    __pyx_t_6 = __Pyx_PyInt_As_size_t(__pyx_t_3); if (unlikely((__pyx_t_6 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_size_t(__pyx_t_3); if (unlikely((__pyx_t_6 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_cur_scope->__pyx_v_i = __pyx_t_6;
 
-    /* "mikeroher/threesum.pyx":80
+    /* "mikeroher/threesum.pyx":97
  *         int dict_len = len(ht)
  *     for i in range(0, dict_len, N):
  *         yield {key: ht[key] for key in islice(_iter, N)}             # <<<<<<<<<<<<<<
@@ -5336,11 +5337,11 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
  * cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
  */
     { /* enter inner scope */
-      __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_islice); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_islice); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = __Pyx_PyInt_From_short(__pyx_cur_scope->__pyx_v_N); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_From_short(__pyx_cur_scope->__pyx_v_N); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_9 = NULL;
       __pyx_t_10 = 0;
@@ -5357,7 +5358,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_cur_scope->__pyx_v__iter, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -5366,14 +5367,14 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_cur_scope->__pyx_v__iter, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else
       #endif
       {
-        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         if (__pyx_t_9) {
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -5384,7 +5385,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
@@ -5393,9 +5394,9 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
         __pyx_t_7 = __pyx_t_1; __Pyx_INCREF(__pyx_t_7); __pyx_t_12 = 0;
         __pyx_t_13 = NULL;
       } else {
-        __pyx_t_12 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_12 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_13 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_13 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 97, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -5403,17 +5404,17 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
           if (likely(PyList_CheckExact(__pyx_t_7))) {
             if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_12); __Pyx_INCREF(__pyx_t_1); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_12); __Pyx_INCREF(__pyx_t_1); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_12); __Pyx_INCREF(__pyx_t_1); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_12); __Pyx_INCREF(__pyx_t_1); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
             #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+            __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -5423,7 +5424,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 80, __pyx_L1_error)
+              else __PYX_ERR(0, 97, __pyx_L1_error)
             }
             break;
           }
@@ -5435,11 +5436,11 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
         __pyx_t_1 = 0;
         if (unlikely(__pyx_cur_scope->__pyx_v_ht == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 80, __pyx_L1_error)
+          __PYX_ERR(0, 97, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_ht, __pyx_cur_scope->__pyx_7genexpr__pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_ht, __pyx_cur_scope->__pyx_7genexpr__pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(PyDict_SetItem(__pyx_t_3, (PyObject*)__pyx_cur_scope->__pyx_7genexpr__pyx_v_key, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 80, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_3, (PyObject*)__pyx_cur_scope->__pyx_7genexpr__pyx_v_key, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 97, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -5462,9 +5463,9 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
     __pyx_cur_scope->__pyx_t_1 = 0;
     __Pyx_XGOTREF(__pyx_t_4);
     __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 97, __pyx_L1_error)
 
-    /* "mikeroher/threesum.pyx":79
+    /* "mikeroher/threesum.pyx":96
  *         object _iter = iter(ht)
  *         int dict_len = len(ht)
  *     for i in range(0, dict_len, N):             # <<<<<<<<<<<<<<
@@ -5475,7 +5476,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "mikeroher/threesum.pyx":73
+  /* "mikeroher/threesum.pyx":90
  *     return chunks
  * 
  * def chunk_hashtable(dict ht, short N):             # <<<<<<<<<<<<<<
@@ -5504,7 +5505,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":82
+/* "mikeroher/threesum.pyx":99
  *         yield {key: ht[key] for key in islice(_iter, N)}
  * 
  * cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):             # <<<<<<<<<<<<<<
@@ -5515,7 +5516,7 @@ static PyObject *__pyx_gb_9mikeroher_8threesum_6generator(__pyx_CoroutineObject 
 static PyObject *__pyx_pw_9mikeroher_8threesum_8sum_each_of_first_two_files(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArrayObject *__pyx_v_dfA, PyArrayObject *__pyx_v_dfB, CYTHON_UNUSED int __pyx_skip_dispatch) {
   struct __pyx_obj_9mikeroher_8threesum_RowPair *__pyx_v_rowpair = 0;
-  PyObject *__pyx_v__hashtable = 0;
+  PyObject *__pyx_v_hashtable = 0;
   size_t __pyx_v_a;
   size_t __pyx_v_b;
   __pyx_t_5numpy_int64_t __pyx_v_key;
@@ -5539,7 +5540,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("sum_each_of_first_two_files", 0);
 
-  /* "mikeroher/threesum.pyx":84
+  /* "mikeroher/threesum.pyx":101
  * cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
  *     cdef:
  *         RowPair rowpair = None             # <<<<<<<<<<<<<<
@@ -5549,19 +5550,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
   __Pyx_INCREF(Py_None);
   __pyx_v_rowpair = ((struct __pyx_obj_9mikeroher_8threesum_RowPair *)Py_None);
 
-  /* "mikeroher/threesum.pyx":87
+  /* "mikeroher/threesum.pyx":104
  *         # Since insert operations are very slow, we're going to do all the
  *         # insertions at once. This is significantly faster.
- *         dict _hashtable = {}             # <<<<<<<<<<<<<<
+ *         dict hashtable = {}             # <<<<<<<<<<<<<<
  * 
  *         size_t a, b
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v__hashtable = ((PyObject*)__pyx_t_1);
+  __pyx_v_hashtable = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":99
+  /* "mikeroher/threesum.pyx":116
  *         set value
  * 
  *         unsigned long LEN_A = dfA.shape[0]             # <<<<<<<<<<<<<<
@@ -5570,7 +5571,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
  */
   __pyx_v_LEN_A = (__pyx_v_dfA->dimensions[0]);
 
-  /* "mikeroher/threesum.pyx":100
+  /* "mikeroher/threesum.pyx":117
  * 
  *         unsigned long LEN_A = dfA.shape[0]
  *         unsigned long LEN_B = dfB.shape[0]             # <<<<<<<<<<<<<<
@@ -5579,7 +5580,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
  */
   __pyx_v_LEN_B = (__pyx_v_dfB->dimensions[0]);
 
-  /* "mikeroher/threesum.pyx":102
+  /* "mikeroher/threesum.pyx":119
  *         unsigned long LEN_B = dfB.shape[0]
  * 
  *     for a in range(LEN_A):             # <<<<<<<<<<<<<<
@@ -5591,7 +5592,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_a = __pyx_t_4;
 
-    /* "mikeroher/threesum.pyx":103
+    /* "mikeroher/threesum.pyx":120
  * 
  *     for a in range(LEN_A):
  *         for b in range(LEN_B):             # <<<<<<<<<<<<<<
@@ -5603,18 +5604,18 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_b = __pyx_t_7;
 
-      /* "mikeroher/threesum.pyx":104
+      /* "mikeroher/threesum.pyx":121
  *     for a in range(LEN_A):
  *         for b in range(LEN_B):
  *             rowpair = RowPair(dfA[a], dfB[b])             # <<<<<<<<<<<<<<
  *             # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
  *             key = hash(rowpair.row_sum.tobytes())
  */
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_dfA), __pyx_v_a, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_dfA), __pyx_v_a, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = __Pyx_GetItemInt(((PyObject *)__pyx_v_dfB), __pyx_v_b, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt(((PyObject *)__pyx_v_dfB), __pyx_v_b, size_t, 0, __Pyx_PyInt_FromSize_t, 0, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
@@ -5622,20 +5623,20 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
       PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
       __pyx_t_1 = 0;
       __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9mikeroher_8threesum_RowPair), __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9mikeroher_8threesum_RowPair), __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 121, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF_SET(__pyx_v_rowpair, ((struct __pyx_obj_9mikeroher_8threesum_RowPair *)__pyx_t_8));
       __pyx_t_8 = 0;
 
-      /* "mikeroher/threesum.pyx":106
+      /* "mikeroher/threesum.pyx":123
  *             rowpair = RowPair(dfA[a], dfB[b])
  *             # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
  *             key = hash(rowpair.row_sum.tobytes())             # <<<<<<<<<<<<<<
- *             value = _hashtable.get(key)
+ *             value = hashtable.get(key)
  * 
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_rowpair->row_sum), __pyx_n_s_tobytes); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 106, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_rowpair->row_sum), __pyx_n_s_tobytes); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -5648,84 +5649,84 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
         }
       }
       if (__pyx_t_1) {
-        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
-        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 123, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_10 = PyObject_Hash(__pyx_t_8); if (unlikely(__pyx_t_10 == ((Py_hash_t)-1))) __PYX_ERR(0, 106, __pyx_L1_error)
+      __pyx_t_10 = PyObject_Hash(__pyx_t_8); if (unlikely(__pyx_t_10 == ((Py_hash_t)-1))) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_v_key = __pyx_t_10;
 
-      /* "mikeroher/threesum.pyx":107
+      /* "mikeroher/threesum.pyx":124
  *             # Can't hash an intarray so we have to take the data as bytes (i.e. a string)
  *             key = hash(rowpair.row_sum.tobytes())
- *             value = _hashtable.get(key)             # <<<<<<<<<<<<<<
+ *             value = hashtable.get(key)             # <<<<<<<<<<<<<<
  * 
  *             # if rowpair.row_sum[6] == 143 and rowpair.row_sum[8] == 143 and rowpair.row_sum[0] == 143:
  */
-      __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyDict_GetItemDefault(__pyx_v__hashtable, __pyx_t_8, Py_None); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_GetItemDefault(__pyx_v_hashtable, __pyx_t_8, Py_None); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (!(likely(PySet_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 107, __pyx_L1_error)
+      if (!(likely(PySet_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_value, ((PyObject*)__pyx_t_9));
       __pyx_t_9 = 0;
 
-      /* "mikeroher/threesum.pyx":112
+      /* "mikeroher/threesum.pyx":129
  *             #     print(rowpair.row_sum, hash(rowpair.row_sum.tobytes()))
  * 
  *             if value is None:             # <<<<<<<<<<<<<<
- *                 _hashtable[key] = set([rowpair])
+ *                 hashtable[key] = set([rowpair])
  *                 # _hashtable[key] = [rowpair]
  */
       __pyx_t_11 = (__pyx_v_value == ((PyObject*)Py_None));
       __pyx_t_12 = (__pyx_t_11 != 0);
       if (__pyx_t_12) {
 
-        /* "mikeroher/threesum.pyx":113
+        /* "mikeroher/threesum.pyx":130
  * 
  *             if value is None:
- *                 _hashtable[key] = set([rowpair])             # <<<<<<<<<<<<<<
+ *                 hashtable[key] = set([rowpair])             # <<<<<<<<<<<<<<
  *                 # _hashtable[key] = [rowpair]
  *             else:
  */
-        __pyx_t_9 = PySet_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_9 = PySet_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 130, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        if (PySet_Add(__pyx_t_9, ((PyObject *)__pyx_v_rowpair)) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
-        __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 113, __pyx_L1_error)
+        if (PySet_Add(__pyx_t_9, ((PyObject *)__pyx_v_rowpair)) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 130, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        if (unlikely(PyDict_SetItem(__pyx_v__hashtable, __pyx_t_8, __pyx_t_9) < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_hashtable, __pyx_t_8, __pyx_t_9) < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "mikeroher/threesum.pyx":112
+        /* "mikeroher/threesum.pyx":129
  *             #     print(rowpair.row_sum, hash(rowpair.row_sum.tobytes()))
  * 
  *             if value is None:             # <<<<<<<<<<<<<<
- *                 _hashtable[key] = set([rowpair])
+ *                 hashtable[key] = set([rowpair])
  *                 # _hashtable[key] = [rowpair]
  */
         goto __pyx_L7;
       }
 
-      /* "mikeroher/threesum.pyx":116
+      /* "mikeroher/threesum.pyx":133
  *                 # _hashtable[key] = [rowpair]
  *             else:
- *                 _hashtable[key].add(rowpair)             # <<<<<<<<<<<<<<
+ *                 hashtable[key].add(rowpair)             # <<<<<<<<<<<<<<
  *                 # _hashtable[key].append(rowpair)
- *     return _hashtable
+ *     return hashtable
  */
       /*else*/ {
-        __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 133, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v__hashtable, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_hashtable, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_add); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_add); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 133, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -5739,13 +5740,13 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
           }
         }
         if (!__pyx_t_1) {
-          __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_8, ((PyObject *)__pyx_v_rowpair)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 116, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_8, ((PyObject *)__pyx_v_rowpair)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_8)) {
             PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_rowpair)};
-            __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 116, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_9);
           } else
@@ -5753,19 +5754,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
             PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_rowpair)};
-            __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 116, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_9);
           } else
           #endif
           {
-            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 116, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 133, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_1); __pyx_t_1 = NULL;
             __Pyx_INCREF(((PyObject *)__pyx_v_rowpair));
             __Pyx_GIVEREF(((PyObject *)__pyx_v_rowpair));
             PyTuple_SET_ITEM(__pyx_t_13, 0+1, ((PyObject *)__pyx_v_rowpair));
-            __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 116, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 133, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           }
@@ -5777,19 +5778,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
     }
   }
 
-  /* "mikeroher/threesum.pyx":118
- *                 _hashtable[key].add(rowpair)
+  /* "mikeroher/threesum.pyx":135
+ *                 hashtable[key].add(rowpair)
  *                 # _hashtable[key].append(rowpair)
- *     return _hashtable             # <<<<<<<<<<<<<<
+ *     return hashtable             # <<<<<<<<<<<<<<
  * 
  * cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v__hashtable);
-  __pyx_r = __pyx_v__hashtable;
+  __Pyx_INCREF(__pyx_v_hashtable);
+  __pyx_r = __pyx_v_hashtable;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":82
+  /* "mikeroher/threesum.pyx":99
  *         yield {key: ht[key] for key in islice(_iter, N)}
  * 
  * cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):             # <<<<<<<<<<<<<<
@@ -5807,7 +5808,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(PyArra
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_rowpair);
-  __Pyx_XDECREF(__pyx_v__hashtable);
+  __Pyx_XDECREF(__pyx_v_hashtable);
   __Pyx_XDECREF(__pyx_v_value);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -5845,11 +5846,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_8sum_each_of_first_two_files(PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dfB)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sum_each_of_first_two_files", 1, 2, 2, 1); __PYX_ERR(0, 82, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sum_each_of_first_two_files", 1, 2, 2, 1); __PYX_ERR(0, 99, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_each_of_first_two_files") < 0)) __PYX_ERR(0, 82, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_each_of_first_two_files") < 0)) __PYX_ERR(0, 99, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5862,14 +5863,14 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_8sum_each_of_first_two_files(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sum_each_of_first_two_files", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 82, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sum_each_of_first_two_files", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 99, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.sum_each_of_first_two_files", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dfA), __pyx_ptype_5numpy_ndarray, 1, "dfA", 0))) __PYX_ERR(0, 82, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dfB), __pyx_ptype_5numpy_ndarray, 1, "dfB", 0))) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dfA), __pyx_ptype_5numpy_ndarray, 1, "dfA", 0))) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dfB), __pyx_ptype_5numpy_ndarray, 1, "dfB", 0))) __PYX_ERR(0, 99, __pyx_L1_error)
   __pyx_r = __pyx_pf_9mikeroher_8threesum_7sum_each_of_first_two_files(__pyx_self, __pyx_v_dfA, __pyx_v_dfB);
 
   /* function exit code */
@@ -5887,7 +5888,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7sum_each_of_first_two_files(CYTH
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("sum_each_of_first_two_files", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(__pyx_v_dfA, __pyx_v_dfB, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_sum_each_of_first_two_files(__pyx_v_dfA, __pyx_v_dfB, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5904,8 +5905,8 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7sum_each_of_first_two_files(CYTH
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":120
- *     return _hashtable
+/* "mikeroher/threesum.pyx":137
+ *     return hashtable
  * 
  * cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):             # <<<<<<<<<<<<<<
  *     cdef:
@@ -5943,7 +5944,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
   int __pyx_t_17;
   __Pyx_RefNannySetupContext("find_differences_in_third_file", 0);
 
-  /* "mikeroher/threesum.pyx":125
+  /* "mikeroher/threesum.pyx":142
  *         set value
  *         np.ndarray difference
  *         unsigned long LEN_C = df.shape[0]             # <<<<<<<<<<<<<<
@@ -5952,19 +5953,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
  */
   __pyx_v_LEN_C = (__pyx_v_df.shape[0]);
 
-  /* "mikeroher/threesum.pyx":128
+  /* "mikeroher/threesum.pyx":145
  *         size_t c
  * 
  *         list matches = []             # <<<<<<<<<<<<<<
  *         tuple match = None
  *         RowPair rowpair = None
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_matches = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":129
+  /* "mikeroher/threesum.pyx":146
  * 
  *         list matches = []
  *         tuple match = None             # <<<<<<<<<<<<<<
@@ -5974,7 +5975,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
   __Pyx_INCREF(Py_None);
   __pyx_v_match = ((PyObject*)Py_None);
 
-  /* "mikeroher/threesum.pyx":130
+  /* "mikeroher/threesum.pyx":147
  *         list matches = []
  *         tuple match = None
  *         RowPair rowpair = None             # <<<<<<<<<<<<<<
@@ -5984,7 +5985,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
   __Pyx_INCREF(Py_None);
   __pyx_v_rowpair = ((struct __pyx_obj_9mikeroher_8threesum_RowPair *)Py_None);
 
-  /* "mikeroher/threesum.pyx":132
+  /* "mikeroher/threesum.pyx":149
  *         RowPair rowpair = None
  * 
  *     for c in range(LEN_C):             # <<<<<<<<<<<<<<
@@ -5996,19 +5997,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_c = __pyx_t_4;
 
-    /* "mikeroher/threesum.pyx":136
+    /* "mikeroher/threesum.pyx":153
  *         # data type which is a Pandas series. This way we get an nparray instead where
  *         # we can call the data.
  *         difference = np.subtract(LAMBDA, df[c], dtype=DTYPE)             # <<<<<<<<<<<<<<
  *         # if difference[6] == 143 and difference[8] == 143 and difference[0] == 143:
  *         #     print(difference, hash(difference.tobytes()))
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_subtract); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_subtract); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_From_short(__pyx_v_LAMBDA); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_short(__pyx_v_LAMBDA); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6.data = __pyx_v_df.data;
     __pyx_t_6.memview = __pyx_v_df.memview;
@@ -6021,7 +6022,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__P
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 136, __pyx_L1_error)
+        __PYX_ERR(0, 153, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -6030,12 +6031,12 @@ __pyx_t_6.shape[0] = __pyx_v_df.shape[1];
 __pyx_t_6.strides[0] = __pyx_v_df.strides[1];
     __pyx_t_6.suboffsets[0] = -1;
 
-__pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __pyx_memview_get_short, (int (*)(char *, PyObject *)) __pyx_memview_set_short, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+__pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __pyx_memview_get_short, (int (*)(char *, PyObject *)) __pyx_memview_set_short, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
     __pyx_t_6.data = NULL;
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1);
@@ -6043,26 +6044,26 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
     PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_7);
     __pyx_t_1 = 0;
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 136, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_difference, ((PyArrayObject *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mikeroher/threesum.pyx":139
+    /* "mikeroher/threesum.pyx":156
  *         # if difference[6] == 143 and difference[8] == 143 and difference[0] == 143:
  *         #     print(difference, hash(difference.tobytes()))
  *         key = hash(difference.tobytes())             # <<<<<<<<<<<<<<
  *         value = hashtable.get(key)
  * 
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_difference), __pyx_n_s_tobytes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_difference), __pyx_n_s_tobytes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -6075,27 +6076,27 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
       }
     }
     if (__pyx_t_8) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = PyObject_Hash(__pyx_t_1); if (unlikely(__pyx_t_9 == ((Py_hash_t)-1))) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_9 = PyObject_Hash(__pyx_t_1); if (unlikely(__pyx_t_9 == ((Py_hash_t)-1))) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_key = __pyx_t_9;
 
-    /* "mikeroher/threesum.pyx":140
+    /* "mikeroher/threesum.pyx":157
  *         #     print(difference, hash(difference.tobytes()))
  *         key = hash(difference.tobytes())
  *         value = hashtable.get(key)             # <<<<<<<<<<<<<<
  * 
  *         if value is not None:
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_hashtable, __pyx_n_s_get); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_hashtable, __pyx_n_s_get); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_npy_int64(__pyx_v_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -6108,14 +6109,14 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -6124,30 +6125,30 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 140, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 157, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 140, __pyx_L1_error)
+    if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_value, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mikeroher/threesum.pyx":142
+    /* "mikeroher/threesum.pyx":159
  *         value = hashtable.get(key)
  * 
  *         if value is not None:             # <<<<<<<<<<<<<<
@@ -6158,7 +6159,7 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
     __pyx_t_12 = (__pyx_t_11 != 0);
     if (__pyx_t_12) {
 
-      /* "mikeroher/threesum.pyx":143
+      /* "mikeroher/threesum.pyx":160
  * 
  *         if value is not None:
  *             for rowpair in value:             # <<<<<<<<<<<<<<
@@ -6166,7 +6167,7 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
  *                 matches.append(match)
  */
       __pyx_t_13 = 0;
-      __pyx_t_7 = __Pyx_set_iterator(__pyx_v_value, 1, (&__pyx_t_14), (&__pyx_t_15)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_set_iterator(__pyx_v_value, 1, (&__pyx_t_14), (&__pyx_t_15)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 160, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_XDECREF(__pyx_t_1);
       __pyx_t_1 = __pyx_t_7;
@@ -6174,22 +6175,22 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
       while (1) {
         __pyx_t_16 = __Pyx_set_iter_next(__pyx_t_1, __pyx_t_14, &__pyx_t_13, &__pyx_t_7, __pyx_t_15);
         if (unlikely(__pyx_t_16 == 0)) break;
-        if (unlikely(__pyx_t_16 == -1)) __PYX_ERR(0, 143, __pyx_L1_error)
+        if (unlikely(__pyx_t_16 == -1)) __PYX_ERR(0, 160, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_9mikeroher_8threesum_RowPair))))) __PYX_ERR(0, 143, __pyx_L1_error)
+        if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_9mikeroher_8threesum_RowPair))))) __PYX_ERR(0, 160, __pyx_L1_error)
         __Pyx_DECREF_SET(__pyx_v_rowpair, ((struct __pyx_obj_9mikeroher_8threesum_RowPair *)__pyx_t_7));
         __pyx_t_7 = 0;
 
-        /* "mikeroher/threesum.pyx":144
+        /* "mikeroher/threesum.pyx":161
  *         if value is not None:
  *             for rowpair in value:
  *                 match = (tuple(rowpair.rowA), tuple(rowpair.rowB), tuple(df[c]))             # <<<<<<<<<<<<<<
  *                 matches.append(match)
  *     return matches
  */
-        __pyx_t_7 = PySequence_Tuple(((PyObject *)__pyx_v_rowpair->rowA)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
+        __pyx_t_7 = PySequence_Tuple(((PyObject *)__pyx_v_rowpair->rowA)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_10 = PySequence_Tuple(((PyObject *)__pyx_v_rowpair->rowB)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 144, __pyx_L1_error)
+        __pyx_t_10 = PySequence_Tuple(((PyObject *)__pyx_v_rowpair->rowB)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 161, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_6.data = __pyx_v_df.data;
         __pyx_t_6.memview = __pyx_v_df.memview;
@@ -6202,7 +6203,7 @@ __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 144, __pyx_L1_error)
+        __PYX_ERR(0, 161, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -6211,15 +6212,15 @@ __pyx_t_6.shape[0] = __pyx_v_df.shape[1];
 __pyx_t_6.strides[0] = __pyx_v_df.strides[1];
     __pyx_t_6.suboffsets[0] = -1;
 
-__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __pyx_memview_get_short, (int (*)(char *, PyObject *)) __pyx_memview_set_short, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 144, __pyx_L1_error)
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __pyx_memview_get_short, (int (*)(char *, PyObject *)) __pyx_memview_set_short, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
         __pyx_t_6.memview = NULL;
         __pyx_t_6.data = NULL;
-        __pyx_t_5 = __Pyx_PySequence_Tuple(__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PySequence_Tuple(__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 144, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7);
@@ -6233,17 +6234,17 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
         __Pyx_DECREF_SET(__pyx_v_match, ((PyObject*)__pyx_t_8));
         __pyx_t_8 = 0;
 
-        /* "mikeroher/threesum.pyx":145
+        /* "mikeroher/threesum.pyx":162
  *             for rowpair in value:
  *                 match = (tuple(rowpair.rowA), tuple(rowpair.rowB), tuple(df[c]))
  *                 matches.append(match)             # <<<<<<<<<<<<<<
  *     return matches
  */
-        __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_matches, __pyx_v_match); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_matches, __pyx_v_match); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 162, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "mikeroher/threesum.pyx":142
+      /* "mikeroher/threesum.pyx":159
  *         value = hashtable.get(key)
  * 
  *         if value is not None:             # <<<<<<<<<<<<<<
@@ -6253,7 +6254,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
     }
   }
 
-  /* "mikeroher/threesum.pyx":146
+  /* "mikeroher/threesum.pyx":163
  *                 match = (tuple(rowpair.rowA), tuple(rowpair.rowB), tuple(df[c]))
  *                 matches.append(match)
  *     return matches             # <<<<<<<<<<<<<<
@@ -6263,8 +6264,8 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_6, 1, (PyObject *(*)(char *)) __p
   __pyx_r = __pyx_v_matches;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":120
- *     return _hashtable
+  /* "mikeroher/threesum.pyx":137
+ *     return hashtable
  * 
  * cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):             # <<<<<<<<<<<<<<
  *     cdef:
@@ -6326,17 +6327,17 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_10find_differences_in_third_file(
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_hashtable)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, 1); __PYX_ERR(0, 120, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, 1); __PYX_ERR(0, 137, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_LAMBDA)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, 2); __PYX_ERR(0, 120, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, 2); __PYX_ERR(0, 137, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_differences_in_third_file") < 0)) __PYX_ERR(0, 120, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_differences_in_third_file") < 0)) __PYX_ERR(0, 137, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6345,13 +6346,13 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_10find_differences_in_third_file(
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 120, __pyx_L3_error)
+    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 137, __pyx_L3_error)
     __pyx_v_hashtable = values[1];
-    __pyx_v_LAMBDA = __Pyx_PyInt_As_short(values[2]); if (unlikely((__pyx_v_LAMBDA == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L3_error)
+    __pyx_v_LAMBDA = __Pyx_PyInt_As_short(values[2]); if (unlikely((__pyx_v_LAMBDA == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 120, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_differences_in_third_file", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 137, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mikeroher.threesum.find_differences_in_third_file", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6370,8 +6371,8 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_9find_differences_in_third_file(C
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("find_differences_in_third_file", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 120, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__pyx_v_df, __pyx_v_hashtable, __pyx_v_LAMBDA, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 137, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_find_differences_in_third_file(__pyx_v_df, __pyx_v_hashtable, __pyx_v_LAMBDA, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22423,7 +22424,7 @@ static PyTypeObject __pyx_type_9mikeroher_8threesum_RowPair = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "\n    Wrapper for two row vectors and calculates the column wise sum\n\n    Keyword arguments:\n        rowA, '1xm'-dimensional numpy array\n        rowB, '1xm'-dimensional numpy array\n\n    Returns the RowPair wrapper\n    ", /*tp_doc*/
+  "\n    Wrapper for two row vectors and calculates the column wise sum.\n    This class wraps the row vectors and is stored in the dictionary's\n    value for the row sum. For example, the dictionary's key would be a\n    sum, suppose 50. Then, the value of that dictionary would be a list\n    of Rowpair objects, where each row_sum attribute is 50.\n\n    Public variables exist for rowA, rowB and the row sum.\n\n    Keyword arguments:\n        rowA, '1xm'-dimensional numpy array\n        rowB, '1xm'-dimensional numpy array\n\n    Returns the RowPair wrapper\n    ", /*tp_doc*/
   __pyx_tp_traverse_9mikeroher_8threesum_RowPair, /*tp_traverse*/
   __pyx_tp_clear_9mikeroher_8threesum_RowPair, /*tp_clear*/
   __pyx_tp_richcompare_9mikeroher_8threesum_RowPair, /*tp_richcompare*/
@@ -23654,8 +23655,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 96, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 229, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(2, 810, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1000, __pyx_L1_error)
@@ -23674,28 +23675,28 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "mikeroher/threesum.pyx":51
+  /* "mikeroher/threesum.pyx":68
  *         np.ndarray data
  *     def iter_func():
  *         with open(filename, 'r') as infile:             # <<<<<<<<<<<<<<
  *             for line_str in infile:
  *                 line = line_str.rstrip().split(delimiter)
  */
-  __pyx_tuple_ = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "mikeroher/threesum.pyx":50
+  /* "mikeroher/threesum.pyx":67
  *         str line_str = None
  *         np.ndarray data
  *     def iter_func():             # <<<<<<<<<<<<<<
  *         with open(filename, 'r') as infile:
  *             for line_str in infile:
  */
-  __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_infile, __pyx_n_s_line_str, __pyx_n_s_line, __pyx_n_s_item); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_infile, __pyx_n_s_line_str, __pyx_n_s_line, __pyx_n_s_item); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_iter_func, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_iter_func, 67, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 67, __pyx_L1_error)
 
   /* "../../../.miniconda3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":229
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
@@ -24019,29 +24020,29 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
 
-  /* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+  /* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
-  __pyx_tuple__35 = PyTuple_Pack(8, __pyx_n_s_filename, __pyx_n_s_delimiter, __pyx_n_s_rowlength, __pyx_n_s_line, __pyx_n_s_line_str, __pyx_n_s_data, __pyx_n_s_iter_func, __pyx_n_s_iter_func); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(8, __pyx_n_s_filename, __pyx_n_s_delimiter, __pyx_n_s_rowlength, __pyx_n_s_line, __pyx_n_s_line_str, __pyx_n_s_data, __pyx_n_s_iter_func, __pyx_n_s_iter_func); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_iter_loadtxt, 44, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_iter_loadtxt, 52, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 52, __pyx_L1_error)
 
-  /* "mikeroher/threesum.pyx":73
+  /* "mikeroher/threesum.pyx":90
  *     return chunks
  * 
  * def chunk_hashtable(dict ht, short N):             # <<<<<<<<<<<<<<
  *     cdef:
  *         size_t i
  */
-  __pyx_tuple__37 = PyTuple_Pack(7, __pyx_n_s_ht, __pyx_n_s_N, __pyx_n_s_i, __pyx_n_s_key, __pyx_n_s_iter, __pyx_n_s_dict_len, __pyx_n_s_key); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(7, __pyx_n_s_ht, __pyx_n_s_N, __pyx_n_s_i, __pyx_n_s_key, __pyx_n_s_iter, __pyx_n_s_dict_len, __pyx_n_s_key); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__37);
   __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_chunk_hashtable, 73, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_threesum_pyx, __pyx_n_s_chunk_hashtable, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 90, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_RowPair(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -24187,19 +24188,19 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttrString(__pyx_m, "RowPair", (PyObject *)&__pyx_type_9mikeroher_8threesum_RowPair) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9mikeroher_8threesum_RowPair) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __pyx_ptype_9mikeroher_8threesum_RowPair = &__pyx_type_9mikeroher_8threesum_RowPair;
-  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
   __pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt.tp_dictoffset && __pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt = &__pyx_type_9mikeroher_8threesum___pyx_scope_struct__iter_loadtxt;
-  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   __pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func.tp_dictoffset && __pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_9mikeroher_8threesum___pyx_scope_struct_1_iter_func = &__pyx_type_9mikeroher_8threesum___pyx_scope_struct_1_iter_func;
-  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable.tp_dictoffset && __pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9mikeroher_8threesum___pyx_scope_struct_2_chunk_hashtable.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
@@ -24519,14 +24520,14 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":30
+  /* "mikeroher/threesum.pyx":36
  *         np.ndarray row_sum
  * 
  *     __slots__ = ['rowA', 'rowB', 'row_sum']             # <<<<<<<<<<<<<<
  *     def __init__(self, np.ndarray rowA, np.ndarray rowB):
  *         self.rowA = rowA
  */
-  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_u_rowA);
   __Pyx_GIVEREF(__pyx_n_u_rowA);
@@ -24537,32 +24538,32 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_u_row_sum);
   __Pyx_GIVEREF(__pyx_n_u_row_sum);
   PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_u_row_sum);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_9mikeroher_8threesum_RowPair->tp_dict, __pyx_n_s_slots, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_9mikeroher_8threesum_RowPair->tp_dict, __pyx_n_s_slots, __pyx_t_1) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_9mikeroher_8threesum_RowPair);
 
-  /* "mikeroher/threesum.pyx":44
- * # Since, numpy's loadtxt and genfromtxt do a lot of guesswork and error checking,
- * # we're going to create our own read file array.
+  /* "mikeroher/threesum.pyx":52
+ *         return hash(np.column_stack((self.rowA, self.rowB)).data.tobytes())
+ * 
  * def iter_loadtxt(str filename, str delimiter):             # <<<<<<<<<<<<<<
- *     cdef:
- *         int rowlength = -1
+ *     """
+ *     Read a delimited `nxm` table into a numpy `nxm` table. Since, numpy's
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_1iter_loadtxt, NULL, __pyx_n_s_mikeroher_threesum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_1iter_loadtxt, NULL, __pyx_n_s_mikeroher_threesum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iter_loadtxt, __pyx_t_1) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_iter_loadtxt, __pyx_t_1) < 0) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":73
+  /* "mikeroher/threesum.pyx":90
  *     return chunks
  * 
  * def chunk_hashtable(dict ht, short N):             # <<<<<<<<<<<<<<
  *     cdef:
  *         size_t i
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_5chunk_hashtable, NULL, __pyx_n_s_mikeroher_threesum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9mikeroher_8threesum_5chunk_hashtable, NULL, __pyx_n_s_mikeroher_threesum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chunk_hashtable, __pyx_t_1) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chunk_hashtable, __pyx_t_1) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
