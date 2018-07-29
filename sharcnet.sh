@@ -16,5 +16,5 @@ pip3 install --user cython
 #sqjobs
 
 
-#sqsub -q serial -r5m -o setup.log python3 setup.py build_ext --inplace
+#sqsub --mpp=1G -q serial -r5m -o setup.log python3 setup.py build_ext --inplace
 #sqsub -r 20 -o 3sum.log -q threaded  -n8  --mpp=2G python3 run.py

@@ -6,11 +6,17 @@ import _timing
 
 try:
     # On local machine, it compiles to the nested path
+    #from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, \
     from mikeroher.mikeroher.threesum import sum_each_of_first_two_files, \
-        find_differences_in_third_file, chunk_dataframe, chunk_hashtable, iter_loadtxt
+        find_differences_in_third_file, chunk_dataframe, iter_loadtxt
 except ImportError:
-    # On Sharcnet it compiles to just threesum
-    from threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe, chunk_hashtable, iter_loadtxt
+    # If executing directly in project folder, then this is the correct import.
+    try:
+        from mikeroher.threesum import sum_each_of_first_two_files, \
+            find_differences_in_third_file, chunk_dataframe, iter_loadtxt
+    except ImportError:
+        # When executing on sharcnet, it compiles directly to this
+        from threesum import sum_each_of_first_two_files, find_differences_in_third_file, chunk_dataframe, iter_loadtxt
 
 ########################################### CHANGE ME #################################################
 
@@ -19,8 +25,8 @@ except ImportError:
 if environ.get("CLUSTER") is not None:
     DATA_PATH = "/project/rohe8957"
 else:
-    DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
-    # DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
+    # DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
+    DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
 
 FILE1_NAME = "A.txt"
 
@@ -30,14 +36,14 @@ FILE3_NAME = "C.txt"
 
 OUTPUT_FILENAME = f"{DATA_PATH}/3sum_output.txt"
 
-# When updating the dictionary, don't do it all at once.
-# Split it into chunks and insert each chunk.
-HASHTABLE_CHUNK_SIZE = 100
-
 LAMBDA = 180
 
 # Number of processors to use for multiprocessing
 NUM_OF_PROCESSES = mp.cpu_count()
+
+# When updating the dictionary, don't do it all at once.
+# Split it into chunks and insert each chunk.
+NUMBER_OF_C_CHUNKS = NUM_OF_PROCESSES**2
 ########################################## END OF CHANGE ME ############################################
 
 FILE_TEMPLATE = "{}/{}"
@@ -45,32 +51,33 @@ FILE_TEMPLATE = "{}/{}"
 # Must be short or at least match the DTPE constant in `threesum.pyx`
 DTYPE = np.short
 
-A = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ")
-B = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ")
-C = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ")
-MAX_C = np.amax(C, axis=0)
+# A = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ")
+# B = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ")
+# C = iter_loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ")
+# MAX_C = np.amax(C, axis=0)
 
 #print(A)
-#A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-# B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-# C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+LIST_OF_COLS = list(range(0,40))
+A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
+C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
 
 manager = mp.Manager()
 
 # hashtable = manager.dict()
 
-hashtable = sum_each_of_first_two_files(A, B)
+sum_each_of_first_two_files(A, B)
 # for chunk in chunk_hashtable(_hashtable, HASHTABLE_CHUNK_SIZE):
 #     hashtable.update(chunk)
 
 pool = mp.Pool(processes=NUM_OF_PROCESSES)
 # create our pool with `num_processes` processes
 #pool = mp.Pool(processes=NUM_OF_PROCESSES)
-third_file_chunked = chunk_dataframe(C, NUM_OF_PROCESSES)
+third_file_chunked = chunk_dataframe(C, NUMBER_OF_C_CHUNKS)
 # apply our function to each chunk in the list
 
 #matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, itertools.repeat(hashtable)))
-matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, repeat(hashtable), repeat(LAMBDA)))
+matches = pool.starmap(find_differences_in_third_file, zip(third_file_chunked, repeat(LAMBDA)))
 
 pool.close()
 pool.join()
@@ -83,6 +90,5 @@ for match_tuple in matches:
 file.close()
 
 
-# https://stackoverflow.com/questions/14749897/python-multiprocessing-memory-usage
-#https://stackoverflow.com/questions/34279750/cython-reducing-the-size-of-a-class-reduce-memory-use-improve-speed
 # CONVERT TO MPI?
+# Change to namedtple?

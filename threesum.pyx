@@ -12,6 +12,10 @@ from itertools import islice
 # will introduce different integer types resulting in different hashing values.
 cdef DTYPE = np.short
 
+
+cdef dict hashtable = {}
+# print("hashtable intialized only once as a global")
+
 cdef class RowPair:
     """
     Wrapper for two row vectors and calculates the column wise sum.
@@ -81,27 +85,14 @@ def iter_loadtxt(str filename, str delimiter):
 
 cpdef chunk_dataframe(np.ndarray df, int n):
     assert n > 0, "# of chunks must be greater than zero"
-    #chunk_size = int(df.shape[0] / n)
-    # will work even if the length of the dataframe is not evenly divisible by num_processes
-    #chunks = [df.ix[df.index[i:i + chunk_size]] for i in range(0, df.shape[0], chunk_size)]
     cdef list chunks = np.array_split(df, n, axis=0)
     return chunks
 
-def chunk_hashtable(dict ht, short N):
-    cdef:
-        size_t i
-        np.int64_t key
-        object _iter = iter(ht)
-        int dict_len = len(ht)
-    for i in range(0, dict_len, N):
-        yield {key: ht[key] for key in islice(_iter, N)}
-
 cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
+    global hashtable
+
     cdef:
         RowPair rowpair = None
-        # Since insert operations are very slow, we're going to do all the
-        # insertions at once. This is significantly faster.
-        dict hashtable = {}
 
         size_t a, b
         # It is very important to type ALL your variables. You do not get any
@@ -132,9 +123,8 @@ cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
             else:
                 hashtable[key].add(rowpair)
                 # _hashtable[key].append(rowpair)
-    return hashtable
 
-cpdef find_differences_in_third_file(short [:, :] df, object hashtable, const short LAMBDA):
+cpdef find_differences_in_third_file(short [:, :] df, const short LAMBDA):
     cdef:
         np.int64_t key
         set value
