@@ -6,7 +6,8 @@ local:
 	${PYTHON} setup.py build_ext --inplace
 
 run:
-	${PYTHON} run.py
+	#${PYTHON} run.py
+	mpiexec -n 2 ${PYTHON} run.py
 
 annotate:
 	cythonize -a threesum.pyx

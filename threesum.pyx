@@ -12,10 +12,6 @@ from itertools import islice
 # will introduce different integer types resulting in different hashing values.
 cdef DTYPE = np.short
 
-
-cdef dict hashtable = {}
-# print("hashtable intialized only once as a global")
-
 cdef class RowPair:
     """
     Wrapper for two row vectors and calculates the column wise sum.
@@ -89,8 +85,6 @@ cpdef chunk_dataframe(np.ndarray df, int n):
     return chunks
 
 cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
-    global hashtable
-
     cdef:
         RowPair rowpair = None
 
@@ -103,7 +97,7 @@ cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
         # This must be an int64 as the hashed key is too large for a short
         np.int64_t key
         set value
-
+        dict hashtable =  {}
         unsigned long LEN_A = dfA.shape[0]
         unsigned long LEN_B = dfB.shape[0]
 
@@ -114,17 +108,15 @@ cpdef sum_each_of_first_two_files(np.ndarray dfA, np.ndarray dfB):
             key = hash(rowpair.row_sum.tobytes())
             value = hashtable.get(key)
 
-            # if rowpair.row_sum[6] == 143 and rowpair.row_sum[8] == 143 and rowpair.row_sum[0] == 143:
-            #     print(rowpair.row_sum, hash(rowpair.row_sum.tobytes()))
-
             if value is None:
                 hashtable[key] = set([rowpair])
                 # _hashtable[key] = [rowpair]
             else:
                 hashtable[key].add(rowpair)
                 # _hashtable[key].append(rowpair)
+    return hashtable
 
-cpdef find_differences_in_third_file(short [:, :] df, const short LAMBDA):
+cpdef find_differences_in_third_file(short [:, :] df, dict hashtable, const short LAMBDA):
     cdef:
         np.int64_t key
         set value
@@ -141,8 +133,6 @@ cpdef find_differences_in_third_file(short [:, :] df, const short LAMBDA):
         # data type which is a Pandas series. This way we get an nparray instead where
         # we can call the data.
         difference = np.subtract(LAMBDA, df[c], dtype=DTYPE)
-        # if difference[6] == 143 and difference[8] == 143 and difference[0] == 143:
-        #     print(difference, hash(difference.tobytes()))
         key = hash(difference.tobytes())
         value = hashtable.get(key)
 
