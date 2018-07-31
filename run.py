@@ -2,6 +2,7 @@ import numpy as np
 from mpi4py import MPI
 from os import environ
 import pickle
+from collections import defaultdict
 from datetime import datetime
 import _timing
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
 
     # When updating the dictionary, don't do it all at once.
     # Split it into chunks and insert each chunk.
-    NUMBER_OF_C_CHUNKS = COMM.Get_size()
+    NUMBER_OF_CHUNKS = COMM.Get_size()
 
     ########################################## END OF CHANGE ME ############################################
 
@@ -58,25 +59,62 @@ if __name__ == '__main__':
     # Must be short or at least match the DTPE constant in `threesum.pyx`
     DTYPE = np.short
 
+    LIST_OF_COLS = list(range(0, NUMBER_OF_COLUMNS))
+
+    # This is used by all processes so we need to define it for all.
+    B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE,
+                   ndmin=2)
+
     if COMM.rank == 0:
-        LIST_OF_COLS = list(range(0, NUMBER_OF_COLUMNS))
+        # These are only used by the root process, so we can define it only for the root process
         A = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE1_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-        B = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE2_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
         C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
 
+        first_file_chunked = chunk_dataframe(A, NUMBER_OF_CHUNKS)
+    else:
+        first_file_chunked = None
 
-        # Loop through each of the rows in the first two files, summing the columns
-        # to create a dictionary where the key is the row of summed columns and the
-        # value is a list of `Rowpair` objects which is a wrapper around the two rows
-        # that were summed.
-        hashtable = sum_each_of_first_two_files(A, B)
-        # hashtable = pickle.load('2018-07-03 18:39:17_hashtable.pickle')
+    A_chunk = COMM.scatter(first_file_chunked)
 
+
+    # Loop through each of the rows in the first two files, summing the columns
+    # to create a dictionary where the key is the row of summed columns and the
+    # value is a list of `Rowpair` objects which is a wrapper around the two rows
+    # that were summed.
+    hashtable_chunk = sum_each_of_first_two_files(A_chunk, B)
+
+    hashtables = COMM.gather(hashtable_chunk)
+
+    if COMM.rank == 0:
+        # MERGE ALL THE HASHTABLES CREATED FROM EACH PROCESS INTO ONE MASTER HASHTABLE
+        # ---
+        # Use a default dict for the merge. The difference is that a default dict doesn't throw
+        # KeyErrror's if the key is not found. So, we can call extend directly on it. Initialize
+        # the dict with the contents of the first hashtable (to skip one iteration) then add each
+        # of the following hashtables in, checking each time if the key already exists. If it does,
+        # append the values to the existing key.
+
+        # Initialize with contents of first hashtable and set the fallback to an empty list.
+        hashtable = defaultdict(list, hashtables[0])
+        # Loop through remaining hashtables...
+        for ht in hashtables[1:]:
+            for k, v in ht.items():
+                # Remember: defaultdict automatically creates the key if it doesn't exist so we can assume
+                # it does. If it doesn't, a list is automatically created and the `v` list is extended to it.
+                hashtable[k].extend(v)
+        # Since we're done editing it, change it back to a dict as Cython doesn't handle defaultdict's
+        # particularly well
+        hashtable = dict(hashtable)
+
+
+        # MAKE A BACKUP OF THE HASHTABLE SO WE CAN RESTORE FROM HERE IF NEEDED
+        # ---
         # Write the hashtable to a file. If the execution crashes after this runs,
         # you can comment out the `sum_each_of_first_two_files` call and replace
         # it with the `pickle.load`. This will allow us to skip the memory/time
         # consuming process of summing each of the first two files and proceed
         # directly to the finding differences step.
+        # hashtable = pickle.load('2018-07-03 18:39:17_hashtable.pickle')
 
         # Get the datetime as a string for unique filenames
         time_as_str = datetime.now().isoformat(' ', 'seconds')
@@ -91,16 +129,18 @@ if __name__ == '__main__':
     # is the first process.
     hashtable = COMM.bcast(hashtable)
 
-
+    # Release the memory associated with file A and B as they are not needed anymore
+    A = None
+    B = None
 
     if COMM.rank == 0:
-        third_file_chunked = chunk_dataframe(C, NUMBER_OF_C_CHUNKS)
+        third_file_chunked = chunk_dataframe(C, NUMBER_OF_CHUNKS)
     else:
         third_file_chunked = None
 
-    chunk = COMM.scatter(third_file_chunked)
+    C_chunk = COMM.scatter(third_file_chunked)
 
-    match = find_differences_in_third_file(chunk, hashtable, LAMBDA)
+    match = find_differences_in_third_file(C_chunk, hashtable, LAMBDA)
 
     matches = COMM.gather(match)
 

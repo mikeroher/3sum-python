@@ -2171,7 +2171,6 @@ static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_sum[] = "sum";
 static const char __pyx_k_axis[] = "axis";
 static const char __pyx_k_base[] = "base";
-static const char __pyx_k_data[] = "data";
 static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_mode[] = "mode";
@@ -2320,7 +2319,6 @@ static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_column_stack;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
-static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_df;
 static PyObject *__pyx_n_s_dfA;
 static PyObject *__pyx_n_s_dfB;
@@ -2637,7 +2635,7 @@ static int __pyx_pf_9mikeroher_8threesum_7RowPair___init__(struct __pyx_obj_9mik
  *         # self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
  * 
  *     def row_sum(self):             # <<<<<<<<<<<<<<
- *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())
+ *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())
  * 
  */
 
@@ -2670,7 +2668,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2row_sum(struct __pyx_ob
   /* "mikeroher/threesum.pyx":46
  * 
  *     def row_sum(self):
- *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())             # <<<<<<<<<<<<<<
+ *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())             # <<<<<<<<<<<<<<
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):
  */
@@ -2753,30 +2751,27 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2row_sum(struct __pyx_ob
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_7);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-      __Pyx_INCREF(__pyx_t_2);
+  __pyx_t_7 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_7)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_7);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_7, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_7) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_8 = PyObject_Hash(__pyx_t_1); if (unlikely(__pyx_t_8 == ((Py_hash_t)-1))) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyInt_FromHash_t(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
@@ -2789,7 +2784,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_2row_sum(struct __pyx_ob
  *         # self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
  * 
  *     def row_sum(self):             # <<<<<<<<<<<<<<
- *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())
+ *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())
  * 
  */
 
@@ -3322,7 +3317,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_7RowPair_6__setstate_cython__(str
 }
 
 /* "mikeroher/threesum.pyx":48
- *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())
+ *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):             # <<<<<<<<<<<<<<
  *     assert n > 0, "# of chunks must be greater than zero"
@@ -3403,7 +3398,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(PyArrayObject *__p
   goto __pyx_L0;
 
   /* "mikeroher/threesum.pyx":48
- *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())
+ *         return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())
  * 
  * cpdef chunk_dataframe(np.ndarray df, int n):             # <<<<<<<<<<<<<<
  *     assert n > 0, "# of chunks must be greater than zero"
@@ -21090,7 +21085,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_column_stack, __pyx_k_column_stack, sizeof(__pyx_k_column_stack), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
-  {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_n_s_df, __pyx_k_df, sizeof(__pyx_k_df), 0, 0, 1, 1},
   {&__pyx_n_s_dfA, __pyx_k_dfA, sizeof(__pyx_k_dfA), 0, 0, 1, 1},
   {&__pyx_n_s_dfB, __pyx_k_dfB, sizeof(__pyx_k_dfB), 0, 0, 1, 1},

@@ -43,7 +43,7 @@ cdef class RowPair:
         # self.row_sum = np.sum(np.column_stack((rowA, rowB)), axis=1, dtype=DTYPE)
 
     def row_sum(self):
-        return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).data.tobytes())
+        return hash(np.sum(np.column_stack((self.rowA, self.rowB)), axis=1, dtype=DTYPE).tobytes())
 
 cpdef chunk_dataframe(np.ndarray df, int n):
     assert n > 0, "# of chunks must be greater than zero"
