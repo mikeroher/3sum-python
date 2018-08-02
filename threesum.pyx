@@ -18,16 +18,15 @@ cpdef chunk_dataframe(np.ndarray df, int n):
 cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB):
     cdef:
 
-        size_t a, b = 0
+        size_t a, b
         const short[:] rowA
+        np.ndarray rowC
         # This must be an int64 as the hashed key is too large for a short
         bytes row_sum
         unsigned long LEN_A = dfA.shape[0]
         unsigned long LEN_B = dfB.shape[0]
 
         list matches = []
-        tuple match = None
-
     a, b = 0, 0
 
     for a in range(LEN_A):
@@ -46,9 +45,7 @@ cpdef generate_differences_set(const short[:,:] df, const short LAMBDA):
         size_t c
         unsigned long LEN_C = df.shape[0]
         bytes diference
-        set differences
-
-    differences = set()
+        set differences = set()
 
     for c in range(LEN_C):
         difference = np.subtract(LAMBDA, df[c], dtype=DTYPE).tobytes()

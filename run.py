@@ -27,14 +27,14 @@ if __name__ == '__main__':
     # Determine if we're on sharcnet or local
     if IS_ON_SERVER:
         DATA_PATH = "/project/rohe8957"
-        FILE1_NAME = "A_cut.txt"
-        FILE2_NAME = "B_cut.txt"
-        FILE3_NAME = "C_cut.txt"
+        FILE1_NAME = "A1m.txt"
+        FILE2_NAME = "B1m.txt"
+        FILE3_NAME = "C1m.txt"
         NUMBER_OF_COLUMNS = 37
         LAMBDA = 169
     else:
-        DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
-        # DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
+        # DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
+        DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
         FILE1_NAME = "A.txt"
         FILE2_NAME = "B.txt"
         FILE3_NAME = "C.txt"
@@ -58,10 +58,23 @@ if __name__ == '__main__':
 
     LIST_OF_COLS = list(range(0, NUMBER_OF_COLUMNS))
 
-
     if COMM.rank == 0:
         C = np.loadtxt(FILE_TEMPLATE.format(DATA_PATH, FILE3_NAME), delimiter=" ", usecols=LIST_OF_COLS, dtype=DTYPE, ndmin=2)
-        differences = generate_differences_set(C, LAMBDA)
+        third_file_chunked = chunk_dataframe(C, NUMBER_OF_CHUNKS)
+    else:
+        third_file_chunked = None
+
+    C_chunk = COMM.scatter(third_file_chunked)
+
+    difference = generate_differences_set(C_chunk, LAMBDA)
+
+    differences_list = COMM.gather(difference)
+
+    if COMM.rank == 0:
+        differences = set(differences_list[0])
+
+        for diff in differences_list[1:]:
+            differences.update(diff)
     else:
         differences = None
 
