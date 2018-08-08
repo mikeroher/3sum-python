@@ -1,8 +1,20 @@
 ![](https://www.wlu.ca/images/general/desktop_logo.png)
 
+
+![Computer Algebra Research Group](https://i.imgur.com/rewIBVN.jpg)
+
 # Threeway Matching Documentation
 
 TL;DR Important files are `threesum.pyx` and `run.py`. Skip to the [Usage](#usage) to see how to run it on Sharcnet.
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Alogrithim](#alogrithim)
+* [Implementation](#implementation)
+* [Usage](#usage)
+* [Results](#results)
+* [Areas For Improvement](#areas-for-improvement)
 
 ## Introduction
 
@@ -37,7 +49,7 @@ The implementation was completed in Python with mpi4py, Cython and numpy. Optimi
 * Cython is a static compiler for Python that is designed to give C-like performance with code mostly written in Python. 
   * The implementation makes heavy usage of memoryviews. These are Cython's approach to effecient access to memory buffers (i.e. those underlying numpy arrays). 
     * See this for an excellent introduction to them: https://cython.readthedocs.io/en/latest/src/userguide/memoryviews.html
-  * In Cython, variables are typed. The values from the rows are stored as `short`'s throughout the implementation as that was the smallest `int` size.
+  * In Cython, variables are typed. The values from the rows are stored as `short`'s throughout the implementation as that was the smallest `int` size that safely fit the data.
     * **Make sure to specify data types whereever you mutate the data**
       * Numpy changes the data type under the hood if you don't specify it, resulting in floating point errors.
 * mpi4py is a Python wrapper around MPI (Message Passing Interface)
@@ -48,31 +60,31 @@ Note:`_timing.py` is used solely for timing. Changes to these files are likely n
 
 > **Tip**: Please refer to the code itself for more extensive documentation. The notes here are simply an overview of the more in-depth comments in the code.
 
-## Compiler (`setup.py`)
+### Compiler (`setup.py`)
 
 This compiles the `threesum.pyx` file into a binary. The line: `include_dirs=[numpy.get_include()` will generate warnings that can be safely ignored. 
 
 > **Tip:** You can also run `make annotate`. This will create an HTML file showing which lines of `threesum.pyx` are natively compiled as C code and which are compiled as Python code. 
 
-## Library (`threesum.pyx`)
+### Library (`threesum.pyx`)
 
 While this file is independent and can be used outside of this project, it is not recommended. Essentially, this file contains all the functions necessary for the `run.py` to execute. It is compiled into a static library and imported by the `run.py` file. 
 
-### chunk_dataframe
+#### chunk_dataframe
 
 The `chunk_dataframe()` method accepts a 2D Numpy array and chunks it by rows. The parameter `n` specifies the number of chunks to chunk the rows. If the value `n` does not evenly split the dataframe (i.e. len(df) % n != 0) then the last chunk will be smaller than the others. This method is used for scattering a numpy array across processes with MPI. By splitting it up, each chunk can be sent to a different node to be processed with the results being gathered.
 
-## generate_differences_set
+#### generate_differences_set
 
 The `generate_differences_set()` implements step 1 of the [Algorithm](#alogrithim). The method accepts a 2D Numpy array and a LAMBDA value. It loops through each row of the Numpy array, and subtracts the row from the LAMBDA array.
 
-## find_threeway_match
+#### find_threeway_match
 
 The `find_threeway_match()` implements step 2 of the [Algorithim](#alogrithim). The method accepts two 2D Numpy arrays and the differences set generated above. It loops through the first file, then loops through the second file. It calculates the sum of the row from the first file and the sum of the second file. Then, it searches for that sum in the differences set. If the sum is found, then we have found a match.
 
-## Main (`run.py`)
+### Main (`run.py`)
 
-### Constants
+#### Constants
 
 | Name              | Description                                                  | Example Value           |
 | ----------------- | ------------------------------------------------------------ | ----------------------- |
