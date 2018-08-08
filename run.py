@@ -46,11 +46,10 @@ if __name__ == '__main__':
         # This is the target value we are searching for.
         LAMBDA = 169
     else: # We are on our local machine
-        DATA_PATH = "/Users/mikeroher/Library/Mobile Documents/com~apple~CloudDocs/Documents/School/Laurier (2017-2018)/Research/3sum.nosync/src/data"
-        # DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher"
-        FILE1_NAME = "A.txt"
-        FILE2_NAME = "B.txt"
-        FILE3_NAME = "C.txt"
+        DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher/sample_data"
+        FILE1_NAME = "1000_A.txt"
+        FILE2_NAME = "1000_B.txt"
+        FILE3_NAME = "1000_C.txt"
         NUMBER_OF_COLUMNS = 40
         LAMBDA = 180
     # This is the filepath to where the output (i.e. matches) should be stored.
