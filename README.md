@@ -10,7 +10,7 @@ TL;DR Important files are `threesum.pyx` and `run.py`. Skip to the [Usage](#usag
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Alogrithim](#alogrithim)
+* [Algorithm](#algorithm)
 * [Implementation](#implementation)
 * [Usage](#usage)
 * [Results](#results)
@@ -20,7 +20,7 @@ TL;DR Important files are `threesum.pyx` and `run.py`. Skip to the [Usage](#usag
 
 This is an OpenMPI implementation of a solution to the threeway match problem. The largest dataset size tested was 1M rows by 37 columns. It is designed to run on Sharcnet. The threeway matching problem is a variant of the 3SUM problem. It searches three files to find where a row from each file when summed equals a row of constants. Mathematically, this would be represented as *A[i] + B[j] + C[k] = LAMBDA*. We are seeking to improve on the naieve implementation of O(n^3) which would not scale when the files are large.
 
-## Alogrithim
+## Algorithm
 
 We will be implementing a middle out algorithm. The middle out algorithm has a time complexity of O(n^2) + O(n). 
 
@@ -76,11 +76,11 @@ The `chunk_dataframe()` method accepts a 2D Numpy array and chunks it by rows. T
 
 #### generate_differences_set
 
-The `generate_differences_set()` implements step 1 of the [Algorithm](#alogrithim). The method accepts a 2D Numpy array and a LAMBDA value. It loops through each row of the Numpy array, and subtracts the row from the LAMBDA array.
+The `generate_differences_set()` implements step 1 of the [Algorithm](#algorithm). The method accepts a 2D Numpy array and a LAMBDA value. It loops through each row of the Numpy array, and subtracts the row from the LAMBDA array.
 
 #### find_threeway_match
 
-The `find_threeway_match()` implements step 2 of the [Algorithim](#alogrithim). The method accepts two 2D Numpy arrays and the differences set generated above. It loops through the first file, then loops through the second file. It calculates the sum of the row from the first file and the sum of the second file. Then, it searches for that sum in the differences set. If the sum is found, then we have found a match.
+The `find_threeway_match()` implements step 2 of the [Algorithm](#algorithm). The method accepts two 2D Numpy arrays and the differences set generated above. It loops through the first file, then loops through the second file. It calculates the sum of the row from the first file and the sum of the second file. Then, it searches for that sum in the differences set. If the sum is found, then we have found a match.
 
 ### Main (`run.py`)
 
