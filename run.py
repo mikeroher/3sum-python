@@ -45,6 +45,8 @@ if __name__ == '__main__':
         NUMBER_OF_COLUMNS = 37
         # This is the target value we are searching for.
         LAMBDA = 169
+        # Should we exit after the first match?
+        IS_EXITING_AFTER_FIRST_MATCH = True
     else: # We are on our local machine
         DATA_PATH = "/Users/mikeroher/Desktop/3sum/mikeroher/sample_data"
         FILE1_NAME = "1000_A.txt"
@@ -52,6 +54,7 @@ if __name__ == '__main__':
         FILE3_NAME = "1000_C.txt"
         NUMBER_OF_COLUMNS = 40
         LAMBDA = 180
+        IS_EXITING_AFTER_FIRST_MATCH = True
     # This is the filepath to where the output (i.e. matches) should be stored.
     OUTPUT_FILENAME = f"{DATA_PATH}/3sum_output.txt"
 
@@ -154,7 +157,24 @@ if __name__ == '__main__':
     LOG("Started looking for threeway match")
     # Loop through the chunked first file and the second file, search for where the sum of the
     # row from the chunk and the second file is equal to the value in the dictionary.
-    match = find_threeway_match(differences, A_chunk, B)
+    match = find_threeway_match(differences, A_chunk, B, IS_EXITING_AFTER_FIRST_MATCH)
+
+    # If the config varirable was set to quit after the first match, and we found a match
+    # then exit all other processes and print it out. Basically, how this works, is the
+    # config variable is passed to the `find_threeway_match` function which exits after
+    # finding a match so it will return immediately where this will print it and kill
+    # all the other processes.
+    if IS_EXITING_AFTER_FIRST_MATCH and len(match) != 0:
+        LOG("EXITING EARLY BECAUSE WE FOUND A MATCH AND IT WAS TOLD TO EXIT EARLY")
+        file = open(OUTPUT_FILENAME, "w+")
+        for m in match:
+            print(m, file=file)
+            print(m)
+        file.close()
+        # Safely exit the rest of the program. MPI_Abort is hooked into this and will
+        # automatically exit all the MPI processes
+        COMM.Abort()
+
     LOG("Finished looking for threeway match")
 
     # Gather the results into a nested array
@@ -163,8 +183,8 @@ if __name__ == '__main__':
     if IS_ROOT_PROC:
         LOG("Printing output")
         file = open(OUTPUT_FILENAME, "w+")
-        for match_tuple in matches:
-            for match in match_tuple:
-                print(match, file=file)
-                print(match)
+        for match in matches:
+            for m in match:
+                print(m, file=file)
+                print(m)
         file.close()

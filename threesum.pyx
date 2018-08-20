@@ -4,11 +4,14 @@
 import numpy as np
 #access to Numpy C API
 cimport numpy as np
+
+from cpython cimport bool
 # DTYPE for this, which is assigned to the usual NumPy runtime
 # type info object.
 # IMPORTANT - MAKE SURE ALL MATHEMATICAL OPERATIONS USE THE SAME DATATYPE. Otherwise, operations
 # will introduce different integer types resulting in different hashing values.
 cdef DTYPE = np.short
+
 
 cpdef chunk_dataframe(const short[:,:] df, int n):
     """
@@ -25,7 +28,8 @@ cpdef chunk_dataframe(const short[:,:] df, int n):
     cdef list chunks = np.array_split(df, n, axis=0)
     return chunks
 
-cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB):
+cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB,
+                          bool exit_after_first_match):
     """
     Loop through the first and second files, search where the sum of the two rows exists
     in the `differences` set. 
@@ -33,6 +37,8 @@ cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:
     :param differences: Set containing byte strings of the elements in the array.
     :param dfA: 2D memoryview/numpy array to search
     :param dfB: 2D memoryview/numpy array to search
+    :param exit_after_first_match: bool indicating if we should exit after the first match
+            is found.
     :return: a list of matches, stored as tuples
     """
     cdef:
@@ -71,6 +77,10 @@ cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:
                 rowC = np.frombuffer(row_sum, dtype=DTYPE)
                 # Append it to our list of matches as a tuple of numpy arrays
                 matches.append((np.asarray(rowA), np.asarray(dfB[b]), rowC))
+                # If the user wants to quit after the first match, let's exit and return the matches
+                # array. Once we return, we'll handle the MPI interactions from the run.py side.
+                if exit_after_first_match:
+                    return matches
         # After every 1K rows, print a little checkpoint so we can see how far the code has
         # progressed.
         if a % 1000 == 0:

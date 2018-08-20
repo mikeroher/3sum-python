@@ -109,8 +109,10 @@ The main file follows the structure below:
 9. Scatter the A file chunks to each process.
 10. Read in file B.
 11. Each process, calls `find_threeway_match`, on the file A chunk it received
-12. Gather the matches from each process into a list
-13. Loop through the matches and print the results
+12. If the user wants to exit early, once a process finds a threeway match, it will
+quit once it finds a match and skip the remaining steps.
+13. Gather the matches from each process into a list
+14. Loop through the matches and print the results
 
 ## Usage
 

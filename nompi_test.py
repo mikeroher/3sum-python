@@ -37,6 +37,6 @@ if __name__ == '__main__':
                ndmin=2)
 
     differences = generate_differences_set(C, LAMBDA)
-    matches = find_threeway_match(differences, A, B)
+    matches = find_threeway_match(differences, A, B, False)
     for match in matches:
         print(np.asarray(match[0]), np.asarray(match[1]), match[2])

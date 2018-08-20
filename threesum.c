@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "mikeroher.threesum",
+        "name": "threesum",
         "sources": [
             "./threesum.pyx"
         ]
     },
-    "module_name": "mikeroher.threesum"
+    "module_name": "threesum"
 }
 END: Cython Metadata */
 
@@ -572,8 +572,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__mikeroher__threesum
-#define __PYX_HAVE_API__mikeroher__threesum
+#define __PYX_HAVE__threesum
+#define __PYX_HAVE_API__threesum
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -811,6 +811,8 @@ static const char *__pyx_f[] = {
   "__init__.pxd",
   "stringsource",
   "type.pxd",
+  "bool.pxd",
+  "complex.pxd",
 };
 /* MemviewSliceStruct.proto */
 struct __pyx_memoryview_obj;
@@ -2021,13 +2023,77 @@ static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memo
 /* Module declarations from 'cpython.type' */
 static PyTypeObject *__pyx_ptype_7cpython_4type_type = 0;
 
+/* Module declarations from 'cpython.version' */
+
+/* Module declarations from 'cpython.exc' */
+
+/* Module declarations from 'cpython.module' */
+
+/* Module declarations from 'cpython.mem' */
+
+/* Module declarations from 'cpython.tuple' */
+
+/* Module declarations from 'cpython.list' */
+
+/* Module declarations from 'cpython.sequence' */
+
+/* Module declarations from 'cpython.mapping' */
+
+/* Module declarations from 'cpython.iterator' */
+
+/* Module declarations from 'cpython.number' */
+
+/* Module declarations from 'cpython.int' */
+
+/* Module declarations from '__builtin__' */
+
+/* Module declarations from 'cpython.bool' */
+static PyTypeObject *__pyx_ptype_7cpython_4bool_bool = 0;
+
+/* Module declarations from 'cpython.long' */
+
+/* Module declarations from 'cpython.float' */
+
+/* Module declarations from '__builtin__' */
+
+/* Module declarations from 'cpython.complex' */
+static PyTypeObject *__pyx_ptype_7cpython_7complex_complex = 0;
+
+/* Module declarations from 'cpython.string' */
+
+/* Module declarations from 'cpython.unicode' */
+
+/* Module declarations from 'cpython.dict' */
+
+/* Module declarations from 'cpython.instance' */
+
+/* Module declarations from 'cpython.function' */
+
+/* Module declarations from 'cpython.method' */
+
+/* Module declarations from 'cpython.weakref' */
+
+/* Module declarations from 'cpython.getargs' */
+
+/* Module declarations from 'cpython.pythread' */
+
+/* Module declarations from 'cpython.pystate' */
+
+/* Module declarations from 'cpython.cobject' */
+
+/* Module declarations from 'cpython.oldbuffer' */
+
+/* Module declarations from 'cpython.set' */
+
+/* Module declarations from 'cpython.bytes' */
+
+/* Module declarations from 'cpython.pycapsule' */
+
 /* Module declarations from 'cpython' */
 
 /* Module declarations from 'cpython.object' */
 
 /* Module declarations from 'cpython.ref' */
-
-/* Module declarations from 'cpython.mem' */
 
 /* Module declarations from 'numpy' */
 
@@ -2039,12 +2105,12 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'mikeroher.threesum' */
+/* Module declarations from 'threesum' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
 static PyTypeObject *__pyx_memoryviewslice_type = 0;
-static PyObject *__pyx_v_9mikeroher_8threesum_DTYPE = 0;
+static PyObject *__pyx_v_8threesum_DTYPE = 0;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
 static PyObject *indirect = 0;
@@ -2052,9 +2118,9 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice, int, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *, __Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_memviewslice, short const , int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_8threesum_chunk_dataframe(__Pyx_memviewslice, int, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_8threesum_find_threeway_match(PyObject *, __Pyx_memviewslice, __Pyx_memviewslice, PyBoolObject *, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_8threesum_generate_differences_set(__Pyx_memviewslice, short const , int __pyx_skip_dispatch); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2089,11 +2155,11 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_short__const__ = { "const short", NULL, sizeof(short const ), { 0 }, 0, IS_UNSIGNED(short const ) ? 'U' : 'I', IS_UNSIGNED(short const ), 0 };
-#define __Pyx_MODULE_NAME "mikeroher.threesum"
-extern int __pyx_module_is_main_mikeroher__threesum;
-int __pyx_module_is_main_mikeroher__threesum = 0;
+#define __Pyx_MODULE_NAME "threesum"
+extern int __pyx_module_is_main_threesum;
+int __pyx_module_is_main_threesum = 0;
 
-/* Implementation of 'mikeroher.threesum' */
+/* Implementation of 'threesum' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_ValueError;
@@ -2191,6 +2257,7 @@ static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
+static const char __pyx_k_exit_after_first_match[] = "exit_after_first_match";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
 static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
@@ -2272,6 +2339,7 @@ static PyObject *__pyx_n_s_dtype_is_object;
 static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
+static PyObject *__pyx_n_s_exit_after_first_match;
 static PyObject *__pyx_n_s_flags;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_fortran;
@@ -2337,9 +2405,9 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_pf_9mikeroher_8threesum_chunk_dataframe(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, int __pyx_v_n); /* proto */
-static PyObject *__pyx_pf_9mikeroher_8threesum_2find_threeway_match(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB); /* proto */
-static PyObject *__pyx_pf_9mikeroher_8threesum_4generate_differences_set(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, short __pyx_v_LAMBDA); /* proto */
+static PyObject *__pyx_pf_8threesum_chunk_dataframe(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, int __pyx_v_n); /* proto */
+static PyObject *__pyx_pf_8threesum_2find_threeway_match(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB, PyBoolObject *__pyx_v_exit_after_first_match); /* proto */
+static PyObject *__pyx_pf_8threesum_4generate_differences_set(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, short __pyx_v_LAMBDA); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -2431,16 +2499,16 @@ static PyObject *__pyx_tuple__36;
 static PyObject *__pyx_codeobj__37;
 /* Late includes */
 
-/* "mikeroher/threesum.pyx":13
- * cdef DTYPE = np.short
+/* "threesum.pyx":16
+ * 
  * 
  * cpdef chunk_dataframe(const short[:,:] df, int n):             # <<<<<<<<<<<<<<
  *     """
  *     Chunk the dataframe into parts
  */
 
-static PyObject *__pyx_pw_9mikeroher_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice __pyx_v_df, int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_8threesum_chunk_dataframe(__Pyx_memviewslice __pyx_v_df, int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_v_chunks = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2450,7 +2518,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("chunk_dataframe", 0);
 
-  /* "mikeroher/threesum.pyx":22
+  /* "threesum.pyx":27
  *     :return: List of memory views.
  *     """
  *     assert n > 0, "# of chunks must be greater than zero"             # <<<<<<<<<<<<<<
@@ -2461,28 +2529,28 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_n > 0) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_of_chunks_must_be_greater_than);
-      __PYX_ERR(0, 22, __pyx_L1_error)
+      __PYX_ERR(0, 27, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "mikeroher/threesum.pyx":23
+  /* "threesum.pyx":28
  *     """
  *     assert n > 0, "# of chunks must be greater than zero"
  *     cdef list chunks = np.array_split(df, n, axis=0)             # <<<<<<<<<<<<<<
  *     return chunks
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_df, 2, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_df, 2, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2490,32 +2558,32 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_v_chunks = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":24
+  /* "threesum.pyx":29
  *     assert n > 0, "# of chunks must be greater than zero"
  *     cdef list chunks = np.array_split(df, n, axis=0)
  *     return chunks             # <<<<<<<<<<<<<<
  * 
- * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB):
+ * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB,
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_chunks);
   __pyx_r = __pyx_v_chunks;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":13
- * cdef DTYPE = np.short
+  /* "threesum.pyx":16
+ * 
  * 
  * cpdef chunk_dataframe(const short[:,:] df, int n):             # <<<<<<<<<<<<<<
  *     """
@@ -2528,7 +2596,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mikeroher.threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_chunks);
@@ -2538,9 +2606,9 @@ static PyObject *__pyx_f_9mikeroher_8threesum_chunk_dataframe(__Pyx_memviewslice
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9mikeroher_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_9mikeroher_8threesum_chunk_dataframe[] = "\n    Chunk the dataframe into parts\n    The result will be an array of memory views. \n    \n    :param df: The 2D array to split into\n    :param n: The number of chunks to split it into\n    :return: List of memory views.\n    ";
-static PyObject *__pyx_pw_9mikeroher_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_8threesum_chunk_dataframe[] = "\n    Chunk the dataframe into parts\n    The result will be an array of memory views. \n    \n    :param df: The 2D array to split into\n    :param n: The number of chunks to split it into. If the number of chunks does not \n                evenly fit into the number of rows, then the length of the last chunk\n                will be less than n. \n    :return: List of memory views.\n    ";
+static PyObject *__pyx_pw_8threesum_1chunk_dataframe(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_df = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_n;
   PyObject *__pyx_r = 0;
@@ -2569,11 +2637,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_1chunk_dataframe(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, 1); __PYX_ERR(0, 13, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, 1); __PYX_ERR(0, 16, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_dataframe") < 0)) __PYX_ERR(0, 13, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "chunk_dataframe") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2581,32 +2649,32 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_1chunk_dataframe(PyObject *__pyx_
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[0], 0); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 13, __pyx_L3_error)
-    __pyx_v_n = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L3_error)
+    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[0], 0); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 16, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 13, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("chunk_dataframe", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mikeroher.threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9mikeroher_8threesum_chunk_dataframe(__pyx_self, __pyx_v_df, __pyx_v_n);
+  __pyx_r = __pyx_pf_8threesum_chunk_dataframe(__pyx_self, __pyx_v_df, __pyx_v_n);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9mikeroher_8threesum_chunk_dataframe(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, int __pyx_v_n) {
+static PyObject *__pyx_pf_8threesum_chunk_dataframe(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, int __pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("chunk_dataframe", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 13, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_chunk_dataframe(__pyx_v_df, __pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 16, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_8threesum_chunk_dataframe(__pyx_v_df, __pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2615,7 +2683,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_chunk_dataframe(CYTHON_UNUSED PyO
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mikeroher.threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.chunk_dataframe", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_df, 1);
@@ -2624,16 +2692,16 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_chunk_dataframe(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":26
+/* "threesum.pyx":31
  *     return chunks
  * 
- * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB):             # <<<<<<<<<<<<<<
+ * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB,             # <<<<<<<<<<<<<<
+ *                           bool exit_after_first_match):
  *     """
- *     Loop through the first and second files, search where the sum of the two rows exists
  */
 
-static PyObject *__pyx_pw_9mikeroher_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_8threesum_find_threeway_match(PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB, PyBoolObject *__pyx_v_exit_after_first_match, CYTHON_UNUSED int __pyx_skip_dispatch) {
   size_t __pyx_v_a;
   size_t __pyx_v_b;
   __Pyx_memviewslice __pyx_v_rowA = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -2664,7 +2732,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
   int __pyx_t_18;
   __Pyx_RefNannySetupContext("find_threeway_match", 0);
 
-  /* "mikeroher/threesum.pyx":47
+  /* "threesum.pyx":55
  *         # for loop (i.e. not a `for...in`). Thus, we get the number of rows and store them in
  *         # variables to be used as the iterator length.
  *         unsigned long LEN_A = dfA.shape[0]             # <<<<<<<<<<<<<<
@@ -2673,7 +2741,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
  */
   __pyx_v_LEN_A = (__pyx_v_dfA.shape[0]);
 
-  /* "mikeroher/threesum.pyx":48
+  /* "threesum.pyx":56
  *         # variables to be used as the iterator length.
  *         unsigned long LEN_A = dfA.shape[0]
  *         unsigned long LEN_B = dfB.shape[0]             # <<<<<<<<<<<<<<
@@ -2682,19 +2750,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
  */
   __pyx_v_LEN_B = (__pyx_v_dfB.shape[0]);
 
-  /* "mikeroher/threesum.pyx":50
+  /* "threesum.pyx":58
  *         unsigned long LEN_B = dfB.shape[0]
  *         # Stores the list of matches
  *         list matches = []             # <<<<<<<<<<<<<<
  *     a, b = 0, 0
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_matches = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":51
+  /* "threesum.pyx":59
  *         # Stores the list of matches
  *         list matches = []
  *     a, b = 0, 0             # <<<<<<<<<<<<<<
@@ -2706,7 +2774,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
   __pyx_v_a = __pyx_t_2;
   __pyx_v_b = __pyx_t_3;
 
-  /* "mikeroher/threesum.pyx":53
+  /* "threesum.pyx":61
  *     a, b = 0, 0
  * 
  *     for a in range(LEN_A):             # <<<<<<<<<<<<<<
@@ -2718,7 +2786,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_5; __pyx_t_3+=1) {
     __pyx_v_a = __pyx_t_3;
 
-    /* "mikeroher/threesum.pyx":55
+    /* "threesum.pyx":63
  *     for a in range(LEN_A):
  *         # Since we're using a native for loop, we need to store the rowA row.
  *         rowA = dfA[a]             # <<<<<<<<<<<<<<
@@ -2736,7 +2804,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_find_threeway_match(PyObject *__py
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 55, __pyx_L1_error)
+        __PYX_ERR(0, 63, __pyx_L1_error)
     }
         __pyx_t_6.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -2750,7 +2818,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_rowA, 1);
     __pyx_t_6.memview = NULL;
     __pyx_t_6.data = NULL;
 
-    /* "mikeroher/threesum.pyx":56
+    /* "threesum.pyx":64
  *         # Since we're using a native for loop, we need to store the rowA row.
  *         rowA = dfA[a]
  *         for b in range(LEN_B):             # <<<<<<<<<<<<<<
@@ -2762,24 +2830,24 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_rowA, 1);
     for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_8; __pyx_t_2+=1) {
       __pyx_v_b = __pyx_t_2;
 
-      /* "mikeroher/threesum.pyx":64
+      /* "threesum.pyx":72
  *             # where the summed result is a different data type than the input data type which
  *             # becomes critical later on.
  *             row_sum = np.sum(np.column_stack((rowA, dfB[b])), axis=1, dtype=DTYPE).tobytes()             # <<<<<<<<<<<<<<
  * 
  *             # If the `row_sum` is in the differences set, then we have found a match!!
  */
-      __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_sum); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_sum); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_column_stack); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_rowA, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_rowA, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_13.data = __pyx_v_dfB.data;
       __pyx_t_13.memview = __pyx_v_dfB.memview;
@@ -2792,7 +2860,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_rowA, 1);
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 64, __pyx_L1_error)
+        __PYX_ERR(0, 72, __pyx_L1_error)
     }
         __pyx_t_13.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -2801,12 +2869,12 @@ __pyx_t_13.shape[0] = __pyx_v_dfB.shape[1];
 __pyx_t_13.strides[0] = __pyx_v_dfB.strides[1];
     __pyx_t_13.suboffsets[0] = -1;
 
-__pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 64, __pyx_L1_error)
+__pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
       __pyx_t_13.data = NULL;
-      __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_15 = PyTuple_New(2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __Pyx_GIVEREF(__pyx_t_11);
       PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_11);
@@ -2825,14 +2893,14 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         }
       }
       if (!__pyx_t_14) {
-        __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_15); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_15); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_9);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_12)) {
           PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -2841,40 +2909,40 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
           PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_14); __pyx_t_14 = NULL;
           __Pyx_GIVEREF(__pyx_t_15);
           PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_15);
           __pyx_t_15 = 0;
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_12 = PyTuple_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9);
       __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_12, __pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 64, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_dtype, __pyx_v_8threesum_DTYPE) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_12, __pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_11 = NULL;
@@ -2888,18 +2956,18 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         }
       }
       if (__pyx_t_11) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 64, __pyx_L1_error)
+      if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_row_sum, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "mikeroher/threesum.pyx":67
+      /* "threesum.pyx":75
  * 
  *             # If the `row_sum` is in the differences set, then we have found a match!!
  *             if row_sum in differences:             # <<<<<<<<<<<<<<
@@ -2908,54 +2976,54 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
  */
       if (unlikely(__pyx_v_differences == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 67, __pyx_L1_error)
+        __PYX_ERR(0, 75, __pyx_L1_error)
       }
-      __pyx_t_16 = (__Pyx_PySet_ContainsTF(__pyx_v_row_sum, __pyx_v_differences, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
+      __pyx_t_16 = (__Pyx_PySet_ContainsTF(__pyx_v_row_sum, __pyx_v_differences, Py_EQ)); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
       __pyx_t_17 = (__pyx_t_16 != 0);
       if (__pyx_t_17) {
 
-        /* "mikeroher/threesum.pyx":69
+        /* "threesum.pyx":77
  *             if row_sum in differences:
  *                 # To get the last file's row, we have to convert it back from the byte representation.
  *                 rowC = np.frombuffer(row_sum, dtype=DTYPE)             # <<<<<<<<<<<<<<
  *                 # Append it to our list of matches as a tuple of numpy arrays
  *                 matches.append((np.asarray(rowA), np.asarray(dfB[b]), rowC))
  */
-        __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_frombuffer); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_v_row_sum);
         __Pyx_GIVEREF(__pyx_v_row_sum);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_row_sum);
-        __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
-        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_1, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 69, __pyx_L1_error)
+        if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_dtype, __pyx_v_8threesum_DTYPE) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_1, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 69, __pyx_L1_error)
+        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v_rowC, ((PyArrayObject *)__pyx_t_12));
         __pyx_t_12 = 0;
 
-        /* "mikeroher/threesum.pyx":71
+        /* "threesum.pyx":79
  *                 rowC = np.frombuffer(row_sum, dtype=DTYPE)
  *                 # Append it to our list of matches as a tuple of numpy arrays
  *                 matches.append((np.asarray(rowA), np.asarray(dfB[b]), rowC))             # <<<<<<<<<<<<<<
- *         # After every 1K rows, print a little checkpoint so we can see how far the code has
- *         # progressed.
+ *                 # If the user wants to quit after the first match, let's exit and return the matches
+ *                 # array. Once we return, we'll handle the MPI interactions from the run.py side.
  */
-        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_asarray); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_asarray); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_rowA, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_rowA, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_9 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -2968,14 +3036,14 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
           }
         }
         if (!__pyx_t_9) {
-          __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 79, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_12);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_1)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_11};
-            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -2984,28 +3052,28 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_11};
-            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           } else
           #endif
           {
-            __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
             __Pyx_GIVEREF(__pyx_t_11);
             PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_11);
             __pyx_t_11 = 0;
-            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_asarray); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_asarray); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_13.data = __pyx_v_dfB.data;
@@ -3019,7 +3087,7 @@ __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 71, __pyx_L1_error)
+        __PYX_ERR(0, 79, __pyx_L1_error)
     }
         __pyx_t_13.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3028,7 +3096,7 @@ __pyx_t_13.shape[0] = __pyx_v_dfB.shape[1];
 __pyx_t_13.strides[0] = __pyx_v_dfB.strides[1];
     __pyx_t_13.suboffsets[0] = -1;
 
-__pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+__pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
         __pyx_t_13.memview = NULL;
@@ -3044,14 +3112,14 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
           }
         }
         if (!__pyx_t_9) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_1);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_10};
-            __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -3060,26 +3128,26 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_10};
-            __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           } else
           #endif
           {
-            __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_15);
             __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_9); __pyx_t_9 = NULL;
             __Pyx_GIVEREF(__pyx_t_10);
             PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_10);
             __pyx_t_10 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GIVEREF(__pyx_t_12);
         PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_12);
@@ -3090,10 +3158,41 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         PyTuple_SET_ITEM(__pyx_t_11, 2, ((PyObject *)__pyx_v_rowC));
         __pyx_t_12 = 0;
         __pyx_t_1 = 0;
-        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_matches, __pyx_t_11); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_matches, __pyx_t_11); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "mikeroher/threesum.pyx":67
+        /* "threesum.pyx":82
+ *                 # If the user wants to quit after the first match, let's exit and return the matches
+ *                 # array. Once we return, we'll handle the MPI interactions from the run.py side.
+ *                 if exit_after_first_match:             # <<<<<<<<<<<<<<
+ *                     return matches
+ *         # After every 1K rows, print a little checkpoint so we can see how far the code has
+ */
+        __pyx_t_17 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_exit_after_first_match)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
+        if (__pyx_t_17) {
+
+          /* "threesum.pyx":83
+ *                 # array. Once we return, we'll handle the MPI interactions from the run.py side.
+ *                 if exit_after_first_match:
+ *                     return matches             # <<<<<<<<<<<<<<
+ *         # After every 1K rows, print a little checkpoint so we can see how far the code has
+ *         # progressed.
+ */
+          __Pyx_XDECREF(__pyx_r);
+          __Pyx_INCREF(__pyx_v_matches);
+          __pyx_r = __pyx_v_matches;
+          goto __pyx_L0;
+
+          /* "threesum.pyx":82
+ *                 # If the user wants to quit after the first match, let's exit and return the matches
+ *                 # array. Once we return, we'll handle the MPI interactions from the run.py side.
+ *                 if exit_after_first_match:             # <<<<<<<<<<<<<<
+ *                     return matches
+ *         # After every 1K rows, print a little checkpoint so we can see how far the code has
+ */
+        }
+
+        /* "threesum.pyx":75
  * 
  *             # If the `row_sum` is in the differences set, then we have found a match!!
  *             if row_sum in differences:             # <<<<<<<<<<<<<<
@@ -3103,7 +3202,7 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
       }
     }
 
-    /* "mikeroher/threesum.pyx":74
+    /* "threesum.pyx":86
  *         # After every 1K rows, print a little checkpoint so we can see how far the code has
  *         # progressed.
  *         if a % 1000 == 0:             # <<<<<<<<<<<<<<
@@ -3113,16 +3212,16 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
     __pyx_t_17 = (((__pyx_v_a % 0x3E8) == 0) != 0);
     if (__pyx_t_17) {
 
-      /* "mikeroher/threesum.pyx":75
+      /* "threesum.pyx":87
  *         # progressed.
  *         if a % 1000 == 0:
  *             print("\t- Checkpoint: Row {}".format(a))             # <<<<<<<<<<<<<<
  *     return matches
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Checkpoint_Row, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Checkpoint_Row, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyInt_FromSize_t(__pyx_v_a); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_FromSize_t(__pyx_v_a); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -3135,14 +3234,14 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 87, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_11);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_12};
-          __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 87, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -3151,31 +3250,31 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_12};
-          __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 87, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         } else
         #endif
         {
-          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 87, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_GIVEREF(__pyx_t_12);
           PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_12);
           __pyx_t_12 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 87, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "mikeroher/threesum.pyx":74
+      /* "threesum.pyx":86
  *         # After every 1K rows, print a little checkpoint so we can see how far the code has
  *         # progressed.
  *         if a % 1000 == 0:             # <<<<<<<<<<<<<<
@@ -3185,7 +3284,7 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
     }
   }
 
-  /* "mikeroher/threesum.pyx":76
+  /* "threesum.pyx":88
  *         if a % 1000 == 0:
  *             print("\t- Checkpoint: Row {}".format(a))
  *     return matches             # <<<<<<<<<<<<<<
@@ -3197,12 +3296,12 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
   __pyx_r = __pyx_v_matches;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":26
+  /* "threesum.pyx":31
  *     return chunks
  * 
- * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB):             # <<<<<<<<<<<<<<
+ * cpdef find_threeway_match(set differences, const short[:,:] dfA, const short[:,:] dfB,             # <<<<<<<<<<<<<<
+ *                           bool exit_after_first_match):
  *     """
- *     Loop through the first and second files, search where the sum of the two rows exists
  */
 
   /* function exit code */
@@ -3216,7 +3315,7 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
   __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_AddTraceback("mikeroher.threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_rowA, 1);
@@ -3229,22 +3328,25 @@ __pyx_t_10 = __pyx_memoryview_fromslice(__pyx_t_13, 1, (PyObject *(*)(char *)) _
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9mikeroher_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_9mikeroher_8threesum_2find_threeway_match[] = "\n    Loop through the first and second files, search where the sum of the two rows exists\n    in the `differences` set. \n    \n    :param differences: Set containing byte strings of the elements in the array.\n    :param dfA: 2D memoryview/numpy array to search\n    :param dfB: 2D memoryview/numpy array to search\n    :return: a list of matches, stored as tuples\n    ";
-static PyObject *__pyx_pw_9mikeroher_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_8threesum_2find_threeway_match[] = "\n    Loop through the first and second files, search where the sum of the two rows exists\n    in the `differences` set. \n    \n    :param differences: Set containing byte strings of the elements in the array.\n    :param dfA: 2D memoryview/numpy array to search\n    :param dfB: 2D memoryview/numpy array to search\n    :param exit_after_first_match: bool indicating if we should exit after the first match\n            is found.\n    :return: a list of matches, stored as tuples\n    ";
+static PyObject *__pyx_pw_8threesum_3find_threeway_match(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_differences = 0;
   __Pyx_memviewslice __pyx_v_dfA = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_dfB = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyBoolObject *__pyx_v_exit_after_first_match = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("find_threeway_match (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_differences,&__pyx_n_s_dfA,&__pyx_n_s_dfB,0};
-    PyObject* values[3] = {0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_differences,&__pyx_n_s_dfA,&__pyx_n_s_dfB,&__pyx_n_s_exit_after_first_match,0};
+    PyObject* values[4] = {0,0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
@@ -3263,39 +3365,48 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_3find_threeway_match(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dfA)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 3, 3, 1); __PYX_ERR(0, 26, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 4, 4, 1); __PYX_ERR(0, 31, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dfB)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 3, 3, 2); __PYX_ERR(0, 26, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 4, 4, 2); __PYX_ERR(0, 31, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_exit_after_first_match)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 4, 4, 3); __PYX_ERR(0, 31, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_threeway_match") < 0)) __PYX_ERR(0, 26, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_threeway_match") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
     __pyx_v_differences = ((PyObject*)values[0]);
-    __pyx_v_dfA = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[1], 0); if (unlikely(!__pyx_v_dfA.memview)) __PYX_ERR(0, 26, __pyx_L3_error)
-    __pyx_v_dfB = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[2], 0); if (unlikely(!__pyx_v_dfB.memview)) __PYX_ERR(0, 26, __pyx_L3_error)
+    __pyx_v_dfA = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[1], 0); if (unlikely(!__pyx_v_dfA.memview)) __PYX_ERR(0, 31, __pyx_L3_error)
+    __pyx_v_dfB = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[2], 0); if (unlikely(!__pyx_v_dfB.memview)) __PYX_ERR(0, 31, __pyx_L3_error)
+    __pyx_v_exit_after_first_match = ((PyBoolObject *)values[3]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_threeway_match", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mikeroher.threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_differences), (&PySet_Type), 1, "differences", 1))) __PYX_ERR(0, 26, __pyx_L1_error)
-  __pyx_r = __pyx_pf_9mikeroher_8threesum_2find_threeway_match(__pyx_self, __pyx_v_differences, __pyx_v_dfA, __pyx_v_dfB);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_differences), (&PySet_Type), 1, "differences", 1))) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_exit_after_first_match), __pyx_ptype_7cpython_4bool_bool, 1, "exit_after_first_match", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8threesum_2find_threeway_match(__pyx_self, __pyx_v_differences, __pyx_v_dfA, __pyx_v_dfB, __pyx_v_exit_after_first_match);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3306,15 +3417,15 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_3find_threeway_match(PyObject *__
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9mikeroher_8threesum_2find_threeway_match(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB) {
+static PyObject *__pyx_pf_8threesum_2find_threeway_match(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_differences, __Pyx_memviewslice __pyx_v_dfA, __Pyx_memviewslice __pyx_v_dfB, PyBoolObject *__pyx_v_exit_after_first_match) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("find_threeway_match", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_dfA.memview)) { __Pyx_RaiseUnboundLocalError("dfA"); __PYX_ERR(0, 26, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_dfB.memview)) { __Pyx_RaiseUnboundLocalError("dfB"); __PYX_ERR(0, 26, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_find_threeway_match(__pyx_v_differences, __pyx_v_dfA, __pyx_v_dfB, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (unlikely(!__pyx_v_dfA.memview)) { __Pyx_RaiseUnboundLocalError("dfA"); __PYX_ERR(0, 31, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_dfB.memview)) { __Pyx_RaiseUnboundLocalError("dfB"); __PYX_ERR(0, 31, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_8threesum_find_threeway_match(__pyx_v_differences, __pyx_v_dfA, __pyx_v_dfB, __pyx_v_exit_after_first_match, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3323,7 +3434,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_2find_threeway_match(CYTHON_UNUSE
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mikeroher.threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.find_threeway_match", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_dfA, 1);
@@ -3333,7 +3444,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_2find_threeway_match(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "mikeroher/threesum.pyx":78
+/* "threesum.pyx":90
  *     return matches
  * 
  * cpdef generate_differences_set(const short[:,:] df, const short LAMBDA):             # <<<<<<<<<<<<<<
@@ -3341,8 +3452,8 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_2find_threeway_match(CYTHON_UNUSE
  *     Loop through each row and subtract it from the LAMBDA value
  */
 
-static PyObject *__pyx_pw_9mikeroher_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_memviewslice __pyx_v_df, short const __pyx_v_LAMBDA, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_8threesum_generate_differences_set(__Pyx_memviewslice __pyx_v_df, short const __pyx_v_LAMBDA, CYTHON_UNUSED int __pyx_skip_dispatch) {
   size_t __pyx_v_c;
   unsigned long __pyx_v_LEN_C;
   PyObject *__pyx_v_differences = 0;
@@ -3361,7 +3472,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_mem
   int __pyx_t_10;
   __Pyx_RefNannySetupContext("generate_differences_set", 0);
 
-  /* "mikeroher/threesum.pyx":91
+  /* "threesum.pyx":103
  *         # for loop (i.e. not a `for...in`). Thus, we get the number of rows and store them in
  *         # variables to be used as the iterator length.
  *         unsigned long LEN_C = df.shape[0]             # <<<<<<<<<<<<<<
@@ -3370,19 +3481,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_mem
  */
   __pyx_v_LEN_C = (__pyx_v_df.shape[0]);
 
-  /* "mikeroher/threesum.pyx":95
+  /* "threesum.pyx":107
  *         bytes diference
  *         # Set of differences.
  *         set differences = set()             # <<<<<<<<<<<<<<
  * 
  *     for c in range(LEN_C):
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_differences = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":97
+  /* "threesum.pyx":109
  *         set differences = set()
  * 
  *     for c in range(LEN_C):             # <<<<<<<<<<<<<<
@@ -3394,19 +3505,19 @@ static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_mem
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_c = __pyx_t_4;
 
-    /* "mikeroher/threesum.pyx":102
+    /* "threesum.pyx":114
  *         # representation for mainly effeciency reasons but also because the set must be
  *         # Pickable (i.e. serializable) as it's serialized before being passed between processes.
  *         difference = np.subtract(LAMBDA, df[c], dtype=DTYPE).tobytes()             # <<<<<<<<<<<<<<
  *         # Add it to the array
  *         differences.add(difference)
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_subtract); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_subtract); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_short(__pyx_v_LAMBDA); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_short(__pyx_v_LAMBDA); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_7.data = __pyx_v_df.data;
     __pyx_t_7.memview = __pyx_v_df.memview;
@@ -3419,7 +3530,7 @@ static PyObject *__pyx_f_9mikeroher_8threesum_generate_differences_set(__Pyx_mem
         __pyx_tmp_idx += __pyx_tmp_shape;
     if (0 && (__pyx_tmp_idx < 0 || __pyx_tmp_idx >= __pyx_tmp_shape)) {
         PyErr_SetString(PyExc_IndexError, "Index out of bounds (axis 0)");
-        __PYX_ERR(0, 102, __pyx_L1_error)
+        __PYX_ERR(0, 114, __pyx_L1_error)
     }
         __pyx_t_7.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3428,12 +3539,12 @@ __pyx_t_7.shape[0] = __pyx_v_df.shape[1];
 __pyx_t_7.strides[0] = __pyx_v_df.strides[1];
     __pyx_t_7.suboffsets[0] = -1;
 
-__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 102, __pyx_L1_error)
+__pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __pyx_memview_get_short__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
     __pyx_t_7.memview = NULL;
     __pyx_t_7.data = NULL;
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_5);
@@ -3441,15 +3552,15 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
     __pyx_t_5 = 0;
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_v_9mikeroher_8threesum_DTYPE) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_v_8threesum_DTYPE) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_tobytes); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -3463,26 +3574,26 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_difference, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "mikeroher/threesum.pyx":104
+    /* "threesum.pyx":116
  *         difference = np.subtract(LAMBDA, df[c], dtype=DTYPE).tobytes()
  *         # Add it to the array
  *         differences.add(difference)             # <<<<<<<<<<<<<<
  *     return differences
  */
-    __pyx_t_10 = PySet_Add(__pyx_v_differences, __pyx_v_difference); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_10 = PySet_Add(__pyx_v_differences, __pyx_v_difference); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 116, __pyx_L1_error)
   }
 
-  /* "mikeroher/threesum.pyx":105
+  /* "threesum.pyx":117
  *         # Add it to the array
  *         differences.add(difference)
  *     return differences             # <<<<<<<<<<<<<<
@@ -3492,7 +3603,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
   __pyx_r = __pyx_v_differences;
   goto __pyx_L0;
 
-  /* "mikeroher/threesum.pyx":78
+  /* "threesum.pyx":90
  *     return matches
  * 
  * cpdef generate_differences_set(const short[:,:] df, const short LAMBDA):             # <<<<<<<<<<<<<<
@@ -3508,7 +3619,7 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("mikeroher.threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_differences);
@@ -3519,9 +3630,9 @@ __pyx_t_8 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9mikeroher_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_9mikeroher_8threesum_4generate_differences_set[] = "\n    Loop through each row and subtract it from the LAMBDA value\n    \n    :param df: 2D memoryview/numpy array\n    :param LAMBDA: target value that will be searched for\n    :return: a Set of byte strings of the difference between LAMBDA and each row\n    ";
-static PyObject *__pyx_pw_9mikeroher_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_8threesum_4generate_differences_set[] = "\n    Loop through each row and subtract it from the LAMBDA value\n    \n    :param df: 2D memoryview/numpy array\n    :param LAMBDA: target value that will be searched for\n    :return: a Set of byte strings of the difference between LAMBDA and each row\n    ";
+static PyObject *__pyx_pw_8threesum_5generate_differences_set(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_df = { 0, 0, { 0 }, { 0 }, { 0 } };
   short __pyx_v_LAMBDA;
   PyObject *__pyx_r = 0;
@@ -3550,11 +3661,11 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_5generate_differences_set(PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_LAMBDA)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("generate_differences_set", 1, 2, 2, 1); __PYX_ERR(0, 78, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("generate_differences_set", 1, 2, 2, 1); __PYX_ERR(0, 90, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "generate_differences_set") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "generate_differences_set") < 0)) __PYX_ERR(0, 90, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3562,32 +3673,32 @@ static PyObject *__pyx_pw_9mikeroher_8threesum_5generate_differences_set(PyObjec
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[0], 0); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 78, __pyx_L3_error)
-    __pyx_v_LAMBDA = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_LAMBDA == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L3_error)
+    __pyx_v_df = __Pyx_PyObject_to_MemoryviewSlice_dsds_short__const__(values[0], 0); if (unlikely(!__pyx_v_df.memview)) __PYX_ERR(0, 90, __pyx_L3_error)
+    __pyx_v_LAMBDA = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_LAMBDA == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("generate_differences_set", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 78, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("generate_differences_set", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 90, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mikeroher.threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9mikeroher_8threesum_4generate_differences_set(__pyx_self, __pyx_v_df, __pyx_v_LAMBDA);
+  __pyx_r = __pyx_pf_8threesum_4generate_differences_set(__pyx_self, __pyx_v_df, __pyx_v_LAMBDA);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9mikeroher_8threesum_4generate_differences_set(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, short __pyx_v_LAMBDA) {
+static PyObject *__pyx_pf_8threesum_4generate_differences_set(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_df, short __pyx_v_LAMBDA) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("generate_differences_set", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 78, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9mikeroher_8threesum_generate_differences_set(__pyx_v_df, __pyx_v_LAMBDA, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (unlikely(!__pyx_v_df.memview)) { __Pyx_RaiseUnboundLocalError("df"); __PYX_ERR(0, 90, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_8threesum_generate_differences_set(__pyx_v_df, __pyx_v_LAMBDA, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3596,7 +3707,7 @@ static PyObject *__pyx_pf_9mikeroher_8threesum_4generate_differences_set(CYTHON_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mikeroher.threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("threesum.generate_differences_set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_df, 1);
@@ -19105,7 +19216,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mikeroher.threesum.array", /*tp_name*/
+  "threesum.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -19213,7 +19324,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mikeroher.threesum.Enum", /*tp_name*/
+  "threesum.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -19463,7 +19574,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mikeroher.threesum.memoryview", /*tp_name*/
+  "threesum.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -19590,7 +19701,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mikeroher.threesum._memoryviewslice", /*tp_name*/
+  "threesum._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -19655,9 +19766,9 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"chunk_dataframe", (PyCFunction)__pyx_pw_9mikeroher_8threesum_1chunk_dataframe, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9mikeroher_8threesum_chunk_dataframe},
-  {"find_threeway_match", (PyCFunction)__pyx_pw_9mikeroher_8threesum_3find_threeway_match, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9mikeroher_8threesum_2find_threeway_match},
-  {"generate_differences_set", (PyCFunction)__pyx_pw_9mikeroher_8threesum_5generate_differences_set, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9mikeroher_8threesum_4generate_differences_set},
+  {"chunk_dataframe", (PyCFunction)__pyx_pw_8threesum_1chunk_dataframe, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8threesum_chunk_dataframe},
+  {"find_threeway_match", (PyCFunction)__pyx_pw_8threesum_3find_threeway_match, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8threesum_2find_threeway_match},
+  {"generate_differences_set", (PyCFunction)__pyx_pw_8threesum_5generate_differences_set, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8threesum_4generate_differences_set},
   {0, 0, 0, 0}
 };
 
@@ -19746,6 +19857,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
+  {&__pyx_n_s_exit_after_first_match, __pyx_k_exit_after_first_match, sizeof(__pyx_k_exit_after_first_match), 0, 0, 1, 1},
   {&__pyx_n_s_flags, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 0, 1, 1},
@@ -19814,8 +19926,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 53, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 229, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 810, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1000, __pyx_L1_error)
@@ -20250,7 +20362,7 @@ static int __Pyx_modinit_global_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_global_init_code", 0);
   /*--- Global init code ---*/
-  __pyx_v_9mikeroher_8threesum_DTYPE = Py_None; Py_INCREF(Py_None);
+  __pyx_v_8threesum_DTYPE = Py_None; Py_INCREF(Py_None);
   generic = Py_None; Py_INCREF(Py_None);
   strided = Py_None; Py_INCREF(Py_None);
   indirect = Py_None; Py_INCREF(Py_None);
@@ -20341,6 +20453,8 @@ static int __Pyx_modinit_type_import_code(void) {
   sizeof(PyHeapTypeObject),
   #endif
   0); if (unlikely(!__pyx_ptype_7cpython_4type_type)) __PYX_ERR(3, 9, __pyx_L1_error)
+  __pyx_ptype_7cpython_4bool_bool = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "bool", sizeof(PyBoolObject), 0); if (unlikely(!__pyx_ptype_7cpython_4bool_bool)) __PYX_ERR(4, 8, __pyx_L1_error)
+  __pyx_ptype_7cpython_7complex_complex = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "complex", sizeof(PyComplexObject), 0); if (unlikely(!__pyx_ptype_7cpython_7complex_complex)) __PYX_ERR(5, 15, __pyx_L1_error)
   __pyx_ptype_5numpy_dtype = __Pyx_ImportType("numpy", "dtype", sizeof(PyArray_Descr), 0); if (unlikely(!__pyx_ptype_5numpy_dtype)) __PYX_ERR(1, 164, __pyx_L1_error)
   __pyx_ptype_5numpy_flatiter = __Pyx_ImportType("numpy", "flatiter", sizeof(PyArrayIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_flatiter)) __PYX_ERR(1, 186, __pyx_L1_error)
   __pyx_ptype_5numpy_broadcast = __Pyx_ImportType("numpy", "broadcast", sizeof(PyArrayMultiIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_broadcast)) __PYX_ERR(1, 190, __pyx_L1_error)
@@ -20516,14 +20630,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_mikeroher__threesum) {
+  if (__pyx_module_is_main_threesum) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "mikeroher.threesum")) {
-      if (unlikely(PyDict_SetItemString(modules, "mikeroher.threesum", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "threesum")) {
+      if (unlikely(PyDict_SetItemString(modules, "threesum", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -20544,7 +20658,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "mikeroher/threesum.pyx":4
+  /* "threesum.pyx":4
  * 
  * #access to NumPy-Python functions,
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -20556,24 +20670,24 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mikeroher/threesum.pyx":11
+  /* "threesum.pyx":13
  * # IMPORTANT - MAKE SURE ALL MATHEMATICAL OPERATIONS USE THE SAME DATATYPE. Otherwise, operations
  * # will introduce different integer types resulting in different hashing values.
  * cdef DTYPE = np.short             # <<<<<<<<<<<<<<
  * 
- * cpdef chunk_dataframe(const short[:,:] df, int n):
+ * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_short); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_short); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_XGOTREF(__pyx_v_9mikeroher_8threesum_DTYPE);
-  __Pyx_DECREF_SET(__pyx_v_9mikeroher_8threesum_DTYPE, __pyx_t_2);
+  __Pyx_XGOTREF(__pyx_v_8threesum_DTYPE);
+  __Pyx_DECREF_SET(__pyx_v_8threesum_DTYPE, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mikeroher/threesum.pyx":1
+  /* "threesum.pyx":1
  * #cython: language_level=3, boundscheck=False, wraparound=False, infer_types=False             # <<<<<<<<<<<<<<
  * 
  * #access to NumPy-Python functions,
@@ -20744,11 +20858,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init mikeroher.threesum", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init threesum", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init mikeroher.threesum");
+    PyErr_SetString(PyExc_ImportError, "init threesum");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
