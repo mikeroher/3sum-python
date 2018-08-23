@@ -1,7 +1,7 @@
-![](https://www.wlu.ca/images/general/desktop_logo.png)
-
-
-![Computer Algebra Research Group](https://i.imgur.com/rewIBVN.jpg)
+<p align="center" float="left">
+  <img src="https://www.wlu.ca/images/general/desktop_logo.png" alt="WLU" width="45%" />
+  <img src="https://i.imgur.com/rewIBVN.jpg" alt="CARGO Lab" width="45%" /> 
+</p>
 
 # Threeway Matching Documentation
 
@@ -110,15 +110,58 @@ The main file follows the structure below:
 10. Read in file B.
 11. Each process, calls `find_threeway_match`, on the file A chunk it received
 12. If the user wants to exit early, once a process finds a threeway match, it will
-quit once it finds a match and skip the remaining steps.
+   quit once it finds a match and skip the remaining steps.
 13. Gather the matches from each process into a list
 14. Loop through the matches and print the results
+
+### Early Termination Option
+
+The user has the option to terminate after the first match. The option has serious implications on the timing of the algorithm, making it significantly dependent on the first file's line number. The first file is split into N chunks where N is the number of processors. The file is split every L/N rows ("RPP") where L is the number of lines in the file (i.e. the first processor will receive [0, RPP], the second will receive [RPP+ 1, RPP * 2], etc.). This is best explained through an example.
+
+For example, if there are 64 processors and 1,000,000 lines then there are 15,625 rows per processor (1M / 64). Suppose the first match occurs on the 15,626 line of the first file. This would be found very quickly by the second processor as it would be the first line it checked. However, if the first match occurs on the 15,624 line of the first file, then it would take just over six days to find the match. While this is not ideal, this is the cost of parallelizing the problem with MPI as we have to split the files somewhere. If the user knows where the first match is, then they could use a number of processors that would split it nicely.
+
+> **Tip:** An interactive running time calculator is included in the repository. See the file Algorithm Timing.xlsx.
+
+Mathematically speaking, to calculate the running time of the program, we first calculate the Multiple, that is, the processor which would be responsible for finding the match. This would also allow us to scale the *First Index* to the [0, RPP] scale. 
+
+<p align="center">
+<img src="http://latex2png.com/output//latex_2f36688c68bc8061511c3e0a0af29b85.png" height="50px" />
+</p>
+
+To scale the *First Index* to the [0, RPP] scale:
+
+
+<p align="center"><em style="font-family: serif;">Scaled First Index = Orig First Index - Multiple x RPP</em></p>
+
+Then, we can divide the Scaled First Index by the RPP to calculate the first index as a percentage of the total number of rows per process. This percentage can be looked up in a table to get the running time. 
+
+<p align="center"><em style="font-family: serif;">Percentage = Scaled First Index /  RPP</em></p>
+
+| Time (in   hours) | Max Row | Cum. Time |
+| ----------------- | ------- | --------- |
+| < 9.6 hours       | 1000    | 0.000     |
+| [9.6, 19.2]       | 2000    | 0.128     |
+| [19.3, 28.8]      | 3000    | 0.192     |
+| [28.9, 38.4]      | 4000    | 0.256     |
+| [38.5, 48]        | 5000    | 0.320     |
+| [48.1, 57.6]      | 6000    | 0.384     |
+| [57.7, 67.2]      | 7000    | 0.448     |
+| [67.3, 76.8]      | 8000    | 0.512     |
+| [76.9, 86.4]      | 9000    | 0.576     |
+| [86.5, 96]        | 10000   | 0.640     |
+| [96.1, 105.6]     | 11000   | 0.704     |
+| [105.7, 115.2]    | 12000   | 0.768     |
+| [115.3, 124.8]    | 13000   | 0.832     |
+| [124.9, 134.4]    | 14000   | 0.896     |
+| [134.5, 144]      | 15000   | 0.960     |
+| > 144 hours       | 15625   | 1.000     |
 
 ## Usage
 
 ### On Local Machine
 
 * You may need to change the number of processors in the Makefile.
+* Sample data is provided in the `sample_data/` directory. The filename indicates how many rows are in the file (i.e. 1000_A.txt has 1000 rows). The `LAMBDA` for these files is 180.
 
 ```bash
 make local
@@ -139,7 +182,9 @@ pip3 install --user numpy mpi4py cython
 # Can either submit the compile as a job or do it in home directory.
 python3 setup.py build_ext --inplace
 
-# Modify the file `graham_run.sh` to set mem_per_process and number of procs
+# Modify the file `graham_run.sh` to set mem_per_process and number of procs if 64 processes and 2G of memory per is not desired.
+
+# Submit the job to the Graham queue
 sbatch graham_run.sh
 
 # Get currently runinng jobs
