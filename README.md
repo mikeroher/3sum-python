@@ -84,6 +84,8 @@ The `find_threeway_match()` implements step 2 of the [Algorithm](#algorithm). Th
 
 ### Main (`run.py`)
 
++ The `File1_Name`, `File2_Name` and `File3_Name` are placeholders for filenames. However, note that you can load your files in any order. I recommend the largest file as file 1 and the smallest file as file 3. This is due to the fact that file 1 gets looped through as the outer loop so you want it to be the largest and file 3 is stored in memory so you want it to be the smallest.
+
 #### Constants
 
 | Name              | Description                                                  | Example Value           |
@@ -185,6 +187,7 @@ python3 setup.py build_ext --inplace
 # Modify the file `graham_run.sh` to set mem_per_process and number of procs if 64 processes and 2G of memory per is not desired.
 
 # Submit the job to the Graham queue
+
 sbatch graham_run.sh
 
 # Get currently runinng jobs

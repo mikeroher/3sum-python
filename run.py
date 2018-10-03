@@ -36,10 +36,10 @@ if __name__ == '__main__':
 
     if IS_ON_SERVER:
         # Working directory - where the input files should be read from
-        DATA_PATH = "/project/rohe8957"
-        FILE1_NAME = "A1m.txt"
-        FILE2_NAME = "B1m.txt"
-        FILE3_NAME = "C1m.txt"
+        DATA_PATH = "/home/rohe8957/scratch/shared/test-init"
+        FILE1_NAME = "A.49"
+        FILE2_NAME = "B.68"
+        FILE3_NAME = "C.52"
         # Number of columns in each data file. This prevents OOBOE where the delimeter is
         # at the end of the file. It will also throw an error if the # of cols doesn't match.
         NUMBER_OF_COLUMNS = 37
